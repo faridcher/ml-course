@@ -26,7 +26,7 @@ To wrap up, before starting to code make sure the following 3 packages are insta
 ## Screen-shots
 A few screenshots of the plots produced in R:
 
-![Anomaly Detection][https://github.com/faridcher/faridcher.github.io/blob/master/ml-course/Snapshots/AnomolyDetection.png]
+![](https://github.com/faridcher/faridcher.github.io/blob/master/ml-course/Snapshots/AnomolyDetection.png)
 
 ## Topics covered in the course and assignments
 1. Linear regression, cost function and normalization
