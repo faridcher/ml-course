@@ -28,13 +28,13 @@ A few screenshots of the plots produced in R:
 
 ![Anomaly Detection](http://faridcher.github.io/ml-course/Snapshots/AnomolyDetection.png)
 ![Gradient Descent Convergence](http://faridcher.github.io/ml-course/Snapshots/GradientDescent_Convergence.PNG)
-![Multiple Regression](http://faridcher.github.io/ml-course/Snapshots/GradientDescent_multiple-regression.PNG)
 ![K-Means Clustering](http://faridcher.github.io/ml-course/Snapshots/K-Means_Clustering.png)
 ![K-Means Raster Compress](http://faridcher.github.io/ml-course/Snapshots/K-Means_CompressImage.png)
 ![Learning Curves](http://faridcher.github.io/ml-course/Snapshots/Learning Curve.png)
 ![PCA Face Dataset](http://faridcher.github.io/ml-course/Snapshots/PCA_FaceDataset.png)
-![PCA Pixel Dataset Centroids](http://faridcher.github.io/ml-course/Snapshots/PCA_PixelDataset_Centroid.PNG)
 ![SVM RBF Kernel](http://faridcher.github.io/ml-course/Snapshots/SVM_RBF_Kernel.png)
+![Multiple Regression](http://faridcher.github.io/ml-course/Snapshots/GradientDescent_multiple-regression.PNG)
+![PCA Pixel Dataset Centroids](http://faridcher.github.io/ml-course/Snapshots/PCA_PixelDataset_Centroid.PNG)
 
 ## Topics covered in the course and assignments
 1. Linear regression, cost function and normalization
