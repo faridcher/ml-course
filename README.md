@@ -25,7 +25,7 @@ Stemmer software (portStemmer.m) is used in the exercise 6 (spam classification)
 
 Last but not the least is the Octave/Matlab `pinv` function. There is a `ginv` function in `MASS` package that doesn't produce the same exact result of `pinv`. Therefore a slightly modified version of MASS `ginv` is included in the starter codes. `MASS` package is not needed to be installed.
 
-To wrap up, before starting to code make sure the following 3 packages are installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
+To wrap up, before starting to code make sure the following 4 packages are installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
 
 ## Screen-shots
 A few screenshots of the plots produced in R:
