@@ -8,6 +8,8 @@ The code provides the starter code and infrastructure for carrying out the assig
 
 To accomplish the assignments simply fill the parts of the code that is written "Your Code HERE". The assignment instructions (pdf) are included in this repository also. There is a RStudio project file in each exercise folder that is a proper starting point to complete the codes.
 
+The "Solutions" folder has the solutions to the exercises. The `.Rda` or `.txt` data files are not included in this folder.
+
 ## Dependencies (3rd party packages)
 I have tried my best not to use a 3rd party package in the starter codes. However to produce similar results and plots to Octave/Matlab I had to use a few packages although they are not many. 
 
