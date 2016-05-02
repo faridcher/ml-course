@@ -1,9 +1,9 @@
 linearRegCostFunction <- function(X, y, lambda) {
-  #LINEARREGCOSTFUNCTION Compute cost and gradient for regularized linear
+  #linearRegCostFunction Compute cost for regularized linear
   #regression with multiple variables
-  #   [J, grad] <- LINEARREGCOSTFUNCTION(X, y, theta, lambda) computes the
+  #   J <- linearRegCostFunction(X, y, lambda)(theta) computes the
   #   cost of using theta as the parameter for linear regression to fit the
-  #   data points in X and y. Returns the cost in J and the gradient in grad
+  #   data points in X and y. Returns the cost in J
   
   function(theta) {
     # Initialize some useful values
@@ -12,10 +12,10 @@ linearRegCostFunction <- function(X, y, lambda) {
     # You need to return the following variables correctly
     J <- 0
     # ----------------------- YOUR CODE HERE -----------------------
-    # Instructions: Compute the cost and gradient of regularized linear
+    # Instructions: Compute the cost of regularized linear
     #               regression for a particular choice of theta.
     #
-    #               You should set J to the cost and grad to the gradient.
+    #               You should set J to the cost.
     #
     h = X %*% theta
     thetas <- theta[-1]
@@ -27,11 +27,11 @@ linearRegCostFunction <- function(X, y, lambda) {
 }
 
 linearRegGradFunction <- function(X, y, lambda) {
-  #LINEARREGCOSTFUNCTION Compute cost and gradient for regularized linear
+  #linearRegGradFunction Compute gradient for regularized linear
   #regression with multiple variables
-  #   [J, grad] <- LINEARREGCOSTFUNCTION(X, y, theta, lambda) computes the
-  #   cost of using theta as the parameter for linear regression to fit the
-  #   data points in X and y. Returns the cost in J and the gradient in grad
+  #   grad <- linearRegGradFunction(X, y, lambda)(theta) computes the
+  #   gradient of using theta as the parameter for linear regression to fit the
+  #   data points in X and y. Returns the gradient in grad
   
   function(theta) {
     # Initialize some useful values
@@ -40,10 +40,10 @@ linearRegGradFunction <- function(X, y, lambda) {
     # You need to return the following variables correctly
     grad <- rep(0,length(theta))
     # ---------------------- YOUR CODE HERE ----------------------
-    # Instructions: Compute the cost and gradient of regularized linear
+    # Instructions: Compute the gradient of regularized linear
     #               regression for a particular choice of theta.
     #
-    #               You should set J to the cost and grad to the gradient.
+    #               You should set grad to the gradient.
     #
     h = X %*% theta
     
@@ -51,6 +51,7 @@ linearRegGradFunction <- function(X, y, lambda) {
     temp <- theta
     temp[1] <- 0
     grad <- (1 / m) * (t(X) %*% (h - y) + lambda * temp)
+    grad
     # --------------------------------------------------------------
   }
 }

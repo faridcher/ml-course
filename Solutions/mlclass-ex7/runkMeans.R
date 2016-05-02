@@ -2,7 +2,7 @@ runkMeans  <- function(X, initial_centroids,
                        max_iters, plot_progress = FALSE) {
   #RUNKMEANS runs the K-Means algorithm on data matrix X, where each row of X
   #is a single example
-  #   [centroids, idx] <- RUNKMEANS(X, initial_centroids, max_iters, ...
+  #   centroids_idx <- RUNKMEANS(X, initial_centroids, max_iters, ...
   #   plot_progress) runs the K-Means algorithm on data matrix X, where each
   #   row of X is a single example. It uses initial_centroids used as the
   #   initial centroids. max_iters specifies the total number of interactions

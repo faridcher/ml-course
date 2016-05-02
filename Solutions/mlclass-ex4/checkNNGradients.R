@@ -14,8 +14,7 @@ checkNNGradients <- function (lambda = 0) {
   m <- 5
   
   # We generate some 'random' test data
-  Theta1 <-
-    debugInitializeWeights(hidden_layer_size, input_layer_size)
+  Theta1 <- debugInitializeWeights(hidden_layer_size, input_layer_size)
   Theta2 <- debugInitializeWeights(num_labels, hidden_layer_size)
   # Reusing debugInitializeWeights to generate X
   X  <- debugInitializeWeights(m, input_layer_size - 1)
@@ -28,8 +27,7 @@ checkNNGradients <- function (lambda = 0) {
   costFunc <- nnCostFunction(input_layer_size, hidden_layer_size,
                              num_labels, X, y, lambda)
   
-  cfun <- costFunc(nn_params)
-  cost <- cfun
+  cost <- costFunc(nn_params)
   grad <- nnGradFunction(input_layer_size, hidden_layer_size,
                          num_labels, X, y, lambda)(nn_params)
   
@@ -47,7 +45,7 @@ checkNNGradients <- function (lambda = 0) {
   
   # Evaluate the norm of the difference between two solutions.
   # If you have a correct implementation, and assuming you used EPSILON <- 0.0001
-  # in computeNumericalGradient.m, then diff below should be less than 1e-9
+  # in computeNumericalGradient.R, then diff below should be less than 1e-9
   diff <-
     norm(as.matrix(numgrad - grad)) / norm(as.matrix(numgrad + grad))
   

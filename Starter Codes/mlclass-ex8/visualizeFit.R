@@ -2,7 +2,7 @@ visualizeFit <- function (X, mu, sigma2) {
   #VISUALIZEFIT Visualize the dataset and its estimated distribution.
   #   VISUALIZEFIT(X, p, mu, sigma2) This visualization shows you the
   #   probability density function of the Gaussian distribution. Each example
-  #   has a location (x1, x2) that dep}s on its feature values.
+  #   has a location (x1, x2) that depends on its feature values.
   #
   
   XY <- seq(0,35,.5)

@@ -2,7 +2,7 @@ svmTrain  <-
   function(X, Y, C, kernelFunction, tol = 1e-3, max_passes = 5) {
     #SVMTRAIN Trains an SVM classifier using a simplified version of the SMO
     #algorithm.
-    #   [model] <- SVMTRAIN(X, Y, C, kernelFunction, tol, max_passes) trains an
+    #   model <- SVMTRAIN(X, Y, C, kernelFunction, tol, max_passes) trains an
     #   SVM classifier and returns trained model. X is the matrix of training
     #   examples.  Each row is a training example, and the jth column holds the
     #   jth feature.  Y is a column matrix containing 1 for positive examples
@@ -71,7 +71,7 @@ svmTrain  <-
     {
       num_changed_alphas <- 0
       for (i in 1:m) {
-        # Calculate Ei <- f(x(i)) - Y[i] using (2).
+        # Calculate Ei <- f(x[i]) - Y[i] using (2).
         # E[i] <- b + sum (X(i, :) * (repmat(alphas.*Y,1,n).*X)') - Y[i]
         E[i] <- b + sum (alphas * Y * K[,i]) - Y[i]
         
@@ -86,7 +86,7 @@ svmTrain  <-
             j <- ceiling(m * runif(1))
           
           
-          # Calculate Ej <- f(x(j)) - Y[j] using (2).
+          # Calculate Ej <- f(x[j]) - Y[j] using (2).
           E[j] <- b + sum(alphas * Y * K[,j]) - Y[j]
           
           # Save old alphas

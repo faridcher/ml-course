@@ -34,7 +34,7 @@ for (i in 1:length(sources)) {
 #  To use an SVM to classify emails into Spam v.s. Non-Spam, you first need
 #  to convert each email into a vector of features. In this part, you will
 #  implement the preprocessing steps for each email. You should
-#  complete the code in processEmail.m to produce a word indices vector
+#  complete the code in processEmail.R to produce a word indices vector
 #  for a given email.
 
 cat(sprintf('\nPreprocessing sample email (emailSample1.txt)\n'))
@@ -54,7 +54,7 @@ line <- readLines(con = stdin(),1)
 
 ## ---------------------- Part 2: Feature Extraction ----------------------
 #  Now, you will convert each email into a vector of features in R^n. 
-#  You should complete the code in emailFeatures.m to produce a feature
+#  You should complete the code in emailFeatures.R to produce a feature
 #  vector for a given email.
 
 cat(sprintf('\nExtracting features from sample email (emailSample1.txt)\n'))
@@ -78,12 +78,10 @@ line <- readLines(con = stdin(),1)
 
 # Load the Spam Email dataset
 # You will have X, y in your environment
-
-#data <- readMat('spamTrain.mat')
-#save(data, file='spamTrain.Rda')
 load('spamTrain.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
+
 cat(sprintf('\nTraining Linear SVM (Spam Classification)\n'))
 cat(sprintf('(this may take 1 to 2 minutes) ...\n'))
 
@@ -100,9 +98,6 @@ cat(sprintf('Training Accuracy: %f\n', mean(p==y) * 100))
 
 # Load the test dataset
 # You will have Xtest, ytest in your environment
-
-#data <- readMat('spamTest.mat')
-#save(data, file='spamTest.Rda')
 load('spamTest.Rda')
 list2env(data,.GlobalEnv)
 rm(data)

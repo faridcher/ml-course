@@ -20,45 +20,46 @@ validationCurve <- function(X, y, Xval, yval) {
   #               error_train and the validation errors in error_val. The
   #               vector lambda_vec contains the different lambda parameters
   #               to use for each calculation of the errors, i.e,
-  #               error_train(i), and error_val(i) should give
+  #               error_train[i], and error_val[i] should give
   #               you the errors obtained after training with
-  #               lambda <- lambda_vec(i)
+  #               lambda <- lambda_vec[i]
   #
   # Note: You can loop over lambda_vec with the following:
   #
-  #       for i <- 1:length(lambda_vec)
-  #           lambda <- lambda_vec(i)
+  #       for (i in 1:length(lambda_vec)) {
+  #           lambda <- lambda_vec[i]
   #           # Compute train / val errors when training linear
   #           # regression with regularization parameter lambda
-  #           # You should store the result in error_train(i)
-  #           # and error_val(i)
+  #           # You should store the result in error_train[i]
+  #           # and error_val[i]
   #           ....
   #
-  #       end
+  #       }
   #
   #
   
   for (i in 1:length(lambda_vec)) {
-    lambda = lambda_vec[i]
-    theta = trainLinearReg(X, y, lambda)
+    lambda <- lambda_vec[i]
+    theta <- trainLinearReg(X, y, lambda)
+    
     # Set to zero when calculating error since already been trained
-    lambda = 0
+    lambda <- 0
     # We are calc J as error not as cost. So, lambda should not be included when
     # calculating error for thetas that have been trained, else it will be biased
     # Refer to 2.1 of Exercise 5, error is computed without lambda
-    e_train = linearRegCostFunction(X, y, lambda)(theta)
-    e_val = linearRegCostFunction(Xval, yval, lambda)(theta)	# J over all CV set for new set of theta
+    e_train <- linearRegCostFunction(X, y, lambda)(theta)
+    e_val <- linearRegCostFunction(Xval, yval, lambda)(theta)	# J over all CV set for new set of theta
     
     # Accumulating error from i=1:m
     if (i == 1)
     {
-      error_train = e_train
-      error_val = e_val
+      error_train <- e_train
+      error_val <- e_val
     }
     else
     {
-      error_train = rbind(error_train, e_train)
-      error_val = rbind(error_val, e_val)
+      error_train <- rbind(error_train, e_train)
+      error_val <- rbind(error_val, e_val)
     }
   }
   

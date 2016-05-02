@@ -32,7 +32,7 @@ for (i in 1:length(sources)) {
 ## ------------------- Part 1: Find Closest Centroids ----------------------
 #  To help you implement K-Means, we have divided the learning algorithm
 #  into two functions -- findClosestCentroids and computeCentroids. In this
-#  part, you shoudl complete the code in the findClosestCentroids function.
+#  part, you should complete the code in the findClosestCentroids function.
 #
 cat(sprintf('Finding closest centroids.\n\n'))
 
@@ -85,8 +85,6 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nRunning K-Means clustering on example dataset.\n\n'))
 
 # Load an example dataset
-#data <- readMat('ex7data2.mat')
-#save(data,file="ex7data2.Rda")
 load("ex7data2.Rda")
 list2env(data,.GlobalEnv)
 rm(data)
@@ -101,7 +99,7 @@ max_iters <- 10
 # kMeansInitCentroids).
 initial_centroids <- matrix(c(3, 3, 6, 2, 8, 5),3,2,byrow = TRUE)
 
-# Run K-Means algorithm. The 'true' at the } tells our function to plot
+# Run K-Means algorithm. The 'true' at the end tells our function to plot
 # the progress of K-Means
 kMean <- runkMeans(X, initial_centroids, max_iters, TRUE)
 centroids <- kMean$centriods
@@ -122,11 +120,9 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nRunning K-Means clustering on pixels from an image.\n\n'))
 
 #  Load an image of a bird
-# A <- double(imread('bird_small.png'))
-
-# If imread does not work for you, you can try instead
-#data <- readMat('bird_small.mat')
-#save(data, file='bird_small.Rda')
+# library(png)
+# A <- readPNG('bird_small.png')
+#Instead load from Rda
 load('bird_small.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -148,7 +144,7 @@ max_iters <- 10
 
 # When using K-Means, it is important the initialize the centroids
 # randomly.
-# You should complete the code in kMeansInitCentroids.m before proceeding
+# You should complete the code in kMeansInitCentroids.R before proceeding
 initial_centroids <- kMeansInitCentroids(X, K)
 
 # Run K-Means

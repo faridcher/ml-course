@@ -5,7 +5,7 @@ multivariateGaussian <- function(X, mu, Sigma2) {
   #    density function of the examples X under the multivariate gaussian
   #    distribution with parameters mu and Sigma2. If Sigma2 is a matrix, it is
   #    treated as the covariance matrix. If Sigma2 is a vector, it is treated
-  #    as the \sigma^2 values of the variances in each dimension (a diagonal
+  #    as the sigma^2 values of the variances in each dimension (a diagonal
   #    covariance matrix)
   #
   

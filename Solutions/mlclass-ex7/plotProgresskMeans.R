@@ -1,14 +1,16 @@
 plotProgresskMeans <- function (X, centroids, previous, idx, K, i) {
   #PLOTPROGRESSKMEANS is a helper function that displays the progress of
-  #k-Means as it is running. It is int}ed for use only with 2D data.
+  #k-Means as it is running. It is intended for use only with 2D data.
   #   PLOTPROGRESSKMEANS(X, centroids, previous, idx, K, i) plots the data
   #   points with colors assigned to each centroid. With the previous
   #   centroids, it also plots a line between the previous locations and
   #   current locations of the centroids.
   #
   
+  # Setup the plot
   plot(X,type = "n")
   title(main = sprintf('Iteration number %d',i))
+  
   # Plot the examples
   plotDataPoints(X, idx, K)
   

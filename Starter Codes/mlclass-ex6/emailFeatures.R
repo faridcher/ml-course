@@ -38,17 +38,17 @@ x <- rep(0,n)
 #
 #              Your task is take one such word_indices vector and construct
 #              a binary feature vector that indicates whether a particular
-#              word occurs in the email. That is, x(i) <- 1 when word i
+#              word occurs in the email. That is, x[i] <- 1 when word i
 #              is present in the email. Concretely, if the word 'the' (say,
-#              index 60) appears in the email, then x(60) <- 1. The feature
+#              index 60) appears in the email, then x[60] <- 1. The feature
 #              vector should look like:
 #
 #              x <- [ 0 0 0 0 1 0 0 0 ... 0 0 0 0 1 ... 0 0 0 1 0 ..]
 #
 #
 
-x
+
 # --------------------------------------------------------------------------
-    
+x
 
 }

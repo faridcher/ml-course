@@ -18,10 +18,10 @@ predict <- function(Theta1, Theta2, X) {
   #               your learned neural network. You should set p to a
   #               vector containing labels between 1 to num_labels.
   #
-  # Hint: The max function might come in useful. In particular, the max
-  #       function can also return the index of the max element, for more
-  #       information see 'help max'. If your examples are in rows, then, you
-  #       can use max(A, [], 2) to obtain the max for each row.
+  # Hint: The max function might come in useful. In particular, the which.max
+  #       function can return the index of the max element, for more
+  #       information see '?which.max'. If your examples are in rows, then, you
+  #       can use apply(A, 1, max) to obtain the max for each row.
   #
   
   p

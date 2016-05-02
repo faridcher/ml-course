@@ -39,14 +39,14 @@ rm(data)
 #  Y is a 1682x943 matrix, containing ratings (1-5) of 1682 movies on 
 #  943 users
 #
-#  R is a 1682x943 matrix, where R(i,j) <- 1 if and only if user j gave a
+#  R is a 1682x943 matrix, where R[i,j] <- 1 if and only if user j gave a
 #  rating to movie i
 
 #  From the matrix, we can compute statistics like average rating.
 cat(sprintf('Average rating for movie 1 (Toy Story): %f / 5\n\n', 
         mean(Y[1, R[1, ]==1] ) ) )
 
-#  We can "visualize" the ratings matrix by plotting it with imagesc
+#  We can "visualize" the ratings matrix by plotting it with image
 revY <- apply(Y,2,rev)
 image(t(revY) ,ylab="Movies",xlab="Users",
       col=topo.colors(50))
@@ -58,11 +58,9 @@ line <- readLines(con = stdin(),1)
 #  You will now implement the cost function for collaborative filtering.
 #  To help you debug your cost function, we have included set of weights
 #  that we trained on that. Specifically, you should complete the code in 
-#  cofiCostFunc.m to return J.
+#  cofiCostFunc.R to return J.
 
 #  Load pre-trained weights (X, Theta, num_users, num_movies, num_features)
-#data <- readMat('ex8_movieParams.mat')
-#save(data,file="ex8_movieParams.Rda")
 load("ex8_movieParams.Rda")
 list2env(data,.GlobalEnv)
 rm(data)
@@ -88,7 +86,7 @@ line <- readLines(con = stdin(),1)
 ## ---------------- Part 3: Collaborative Filtering Gradient ----------------
 #  Once your cost function matches up with ours, you should now implement 
 #  the collaborative filtering gradient function. Specifically, you should 
-#  complete the code in cofiCostFunc.m to return the grad argument.
+#  complete the code in cofiCostFunc.R to return the grad argument.
 #  
 cat(sprintf('\nChecking Gradients (without regularization) ... \n'))
 
@@ -110,7 +108,7 @@ J <- cofiCostFunc(Y, R, num_users, num_movies,
                num_features, 1.5)(c(c(X),c(Theta)))
            
 cat(sprintf('Cost at loaded parameters (lambda = 1.5): %f
-(this value should be about 31.34)\n', J) )
+(this value should be about 31.34)\n', J))
 
 cat(sprintf('\nProgram paused. Press enter to continue.\n'))
 line <- readLines(con = stdin(),1)
@@ -119,9 +117,7 @@ line <- readLines(con = stdin(),1)
 ## -------- Part 5: Collaborative Filtering Gradient Regularization ------
 #  Once your cost matches up with ours, you should proceed to implement 
 #  regularization for the gradient. 
-#
 
-#  
 cat(sprintf('\nChecking Gradients (with regularization) ... \n'))
 
 #  Check gradients by running checkNNGradients
@@ -179,8 +175,6 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nTraining collaborative filtering...\n'))
 
 #  Load data
-#data <- readMat('ex8_movies.mat')
-#save(data,file="ex8_movies.Rda")
 load("ex8_movies.Rda")
 list2env(data,.GlobalEnv)
 rm(data)
@@ -188,7 +182,7 @@ rm(data)
 #  Y is a 1682x943 matrix, containing ratings (1-5) of 1682 movies by 
 #  943 users
 #
-#  R is a 1682x943 matrix, where R(i,j) <- 1 if and only if user j gave a
+#  R is a 1682x943 matrix, where R[i,j] <- 1 if and only if user j gave a
 #  rating to movie i
 
 #  Add our own ratings to the data matrix
@@ -224,6 +218,7 @@ library(lbfgsb3)
 theta <- lbfgsb3_(initial_parameters, fn= cF, gr=gF,
         control = list(trace=1,maxit=100))$prm
 
+#The following code works but optim is slow on this problem
 #theta <- optim(initial_parameters, fn = cF, gr = gF,
        #method = "BFGS", control = list(maxit=10, trace=1, REPORT=1) )$par
 
@@ -237,8 +232,8 @@ cat(sprintf('Recommender system learning completed.\n'))
 cat(sprintf('\nProgram paused. Press enter to continue.\n'))
 line <- readLines(con = stdin(),1)
 
-## ------------------ Part 8: Recomm}ation for you ----------------------
-#  After training the model, you can now make recomm}ations by computing
+## ------------------ Part 8: recommendation for you ----------------------
+#  After training the model, you can now make recommendations by computing
 #  the predictions matrix.
 #
 

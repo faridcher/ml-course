@@ -1,7 +1,7 @@
 checkCostFunction <- function (lambda = 0) {
   #CHECKCOSTFUNCTION Creates a collaborative filering problem
   #to check your cost function and gradients
-  #   CHECKCOSTFUNCTION(lambda) Creates a collaborative filering problem
+  #   CHECKCOSTFUNCTION(lambda) Creates a collaborative filtering problem
   #   to check your cost function and gradients, it will output the
   #   analytical gradients produced by your code and the numerical gradients
   #   (computed using computeNumericalGradient). These two gradient

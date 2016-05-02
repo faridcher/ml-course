@@ -10,7 +10,7 @@ processEmail <- function(email_contents) {
   vocabList <- getVocabList()
   
   # Init return value
-  #word_indices <- []
+  # word_indices
   
   # ---------------------------- Preprocess Email ---------------------------
   

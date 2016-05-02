@@ -7,7 +7,7 @@
 #  linear exercise. You will need to complete the following functions 
 #  in this exericse:
 #
-#     lrCostFunction.m (logistic regression cost function)
+#     lrCostFunction.R (logistic regression cost function)
 #     oneVsAll.R
 #     predictOneVsAll.R
 #     predict.R
@@ -41,8 +41,6 @@ num_labels <- 10;          # 10 labels, from 1 to 10
 # Load Training Data
 cat(sprintf('Loading and Visualizing Data ...\n'))
 
-#data <- readMat('ex3data1.mat')
-#save(data,file='ex3data1.Rda')
 load('ex3data1.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -65,9 +63,6 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nLoading Saved Neural Network Parameters ...\n'))
 
 # Load the weights into variables Theta1 and Theta2
-
-#data <- readMat('ex3weights.mat')
-#save(data,file='ex3weights.Rda')
 load('ex3weights.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -97,7 +92,7 @@ for (i in 1:m){
     displayData(X[rp[i], ])
 
     pred <- predict(Theta1, Theta2, X[rp[i],])
-    cat(sprintf('\nNeural Network Prediction: %d (digit %d)\n', pred%%10 ,pred %% 10))
+    cat(sprintf('\nNeural Network Prediction: %d (y %d) (digit %d)\n', pred ,y[rp[i]],pred%%10))
     
     # line <- readLines(con = stdin(),1)
     #cat(sprintf('Program paused. Press enter to continue.\n'))

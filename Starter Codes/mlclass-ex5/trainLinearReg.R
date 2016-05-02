@@ -1,7 +1,7 @@
 trainLinearReg <- function(X, y, lambda) {
   #TRAINLINEARREG Trains linear regression given a dataset (X, y) and a
   #regularization parameter lambda
-  #   [theta] <- TRAINLINEARREG (X, y, lambda) trains linear regression using
+  #   theta <- TRAINLINEARREG (X, y, lambda) trains linear regression using
   #   the dataset (X, y) and regularization parameter lambda. Returns the
   #   trained parameters theta.
   #

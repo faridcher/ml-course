@@ -1,7 +1,7 @@
 gaussianKernel <- function(sigma) {
   #RBFKERNEL returns a radial basis function kernel between x1 and x2
-  #   sim <- gaussianKernel(x1, x2) returns a gaussian kernel between x1 and x2
-  #   and returns the value in sim
+  #   sim <- gaussianKernel(sigma) returns a gaussian kernel function between x1 and x2
+  #   and gaussianKernel(sigma)(x1, x2) returns the value in sim
   function(x1, x2) {
     # Ensure that x1 and x2 are column vectors
     x1 <- c(x1)
@@ -16,7 +16,8 @@ gaussianKernel <- function(sigma) {
     #               sigma
     #
     #
-    sim = exp(-(sum((x1 - x2) ^ 2)) / (2 * sigma ^ 2))
+    sim <- exp(-(sum((x1 - x2) ^ 2)) / (2 * sigma ^ 2))
+    sim
   }
   # --------------------------------------------------------------
   

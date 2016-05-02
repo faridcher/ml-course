@@ -1,7 +1,7 @@
 estimateGaussian <- function(X) {
   #ESTIMATEGAUSSIAN This function estimates the parameters of a
   #Gaussian distribution using the data in X
-  #   [mu sigma2] <- estimateGaussian(X),
+  #   mu_sigma2 <- estimateGaussian(X),
   #   The input X is the dataset with each n-dimensional data point in one row
   #   The output is an n-dimensional vector mu, the mean of the data set
   #   and the variances sigma^2, an n x 1 vector
@@ -17,13 +17,13 @@ estimateGaussian <- function(X) {
   
   # ----------------------- YOUR CODE HERE -----------------------
   # Instructions: Compute the mean of the data and the variances
-  #               In particular, mu(i) should contain the mean of
-  #               the data for the i-th feature and sigma2(i)
+  #               In particular, mu[i] should contain the mean of
+  #               the data for the i-th feature and sigma2[i]
   #               should contain variance of the i-th feature.
   #
   
-  mu = 1 / m * apply(X,2,sum)
-  sigma2 = apply(X,2,var) * (m - 1) / m;
+  mu <- 1 / m * apply(X,2,sum)
+  sigma2 <- apply(X,2,var) * (m - 1) / m;
   
   list(mu = mu, sigma2 = sigma2)
   # --------------------------------------------------------------

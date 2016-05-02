@@ -19,7 +19,6 @@
 #
 
 ## Initialization
-## Initialization
 rm(list=ls())
 sources <- c("computeCentroids.R","featureNormalize.R","findClosestCentroids.R",
              "kMeansInitCentroids.R","plotDataPoints.R","plotProgresskMeans.R",
@@ -40,8 +39,6 @@ cat(sprintf('Visualizing example dataset for PCA.\n\n'))
 #  The following command loads the dataset. You should now have the
 #  variable X in your environment
 # library(R.matlab)
-# data <- readMat('ex7data1.mat')
-# save(data, file='ex7data1.Rda')
 load('ex7data1.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -104,7 +101,7 @@ cat(sprintf('\nDimension reduction on example dataset.\n\n'))
 plot(X_norm[, 1], X_norm[, 2], col='blue',xlim=c(-4,3),ylim=c(-4,3))
 
 
-#  Project the data onto K <- 1 dimension
+#  Project the data onto K = 1 dimension
 K <- 1
 Z <- projectData(X_norm, U, K)
 cat(sprintf('Projection of the first example: %f\n', Z[1]))
@@ -115,7 +112,6 @@ cat(sprintf('Approximation of the first example: %f %f\n', X_rec[1,1], X_rec[1,2
 cat(sprintf('\n(this value should be about  -1.047419 -1.047419)\n\n'))
 
 #  Draw lines connecting the projected points to the original points
-#hold on
 points(X_rec[,1], X_rec[,2],col='red')
 
 for (i in 1:dim(X_norm)[1])
@@ -131,8 +127,6 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nLoading face dataset.\n\n'))
 
 #  Load Face dataset
-#data <- readMat('ex7faces.mat')
-#save(data,file='ex7faces.Rda')
 load('ex7faces.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -217,9 +211,9 @@ line <- readLines(con = stdin(),1)
 
 # Re-load the image from the previous exercise and run K-Means on it
 # For this to work, you need to complete the K-Means assignment first
-# A <- double(imread('bird_small.png'))
+# library(png); A <- readPNG('bird_small.png')
 
-# If imread does not work for you, you can try instead
+# If readPNG does not work for you, you can try instead
 load('bird_small.Rda')
 list2env(data, .GlobalEnv)
 rm(data)
@@ -271,5 +265,6 @@ Z <- projectData(X_norm, U, 2)
 # Plot in 2D
 plotDataPoints(Z[sel, ], idx[sel], K, FALSE)
 title(main='Pixel dataset plotted in 2D, \nusing PCA for dimensionality reduction')
+
 cat(sprintf('Program paused. Press enter to continue.\n'))
 line <- readLines(con = stdin(),1)

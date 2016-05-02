@@ -64,8 +64,6 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nLoading Saved Neural Network Parameters ...\n'))
 
 # Load the weights into variables Theta1 and Theta2
-#data <- readMat('ex4weights.mat')
-#save(data,file='ex4weights.Rda')
 load('ex4weights.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -76,7 +74,7 @@ nn_params <-c(c(Theta1),c(Theta2))
 ## ----------------- Part 3: Compute Cost (Feedforward) -----------------
 #  To the neural network, you should first start by implementing the
 #  feedforward part of the neural network that returns the cost only. You
-#  should complete the code in nnCostFunction.m to return cost. After
+#  should complete the code in nnCostFunction.R to return cost. After
 #  implementing the feedforward to compute the cost, you can verify that
 #  your implementation is correct by verifying that you get the same cost
 #  as us for the fixed debugging parameters.
@@ -122,7 +120,7 @@ line <- readLines(con = stdin(),1)
 ## ----------------- Part 5: Sigmoid Gradient  -----------------
 #  Before you start implementing the neural network, you will first
 #  implement the gradient for the sigmoid function. You should complete the
-#  code in the sigmoidGradient.m file.
+#  code in the sigmoidGradient.R file.
 #
 
 cat(sprintf('\nEvaluating sigmoid gradient...\n'))
@@ -137,10 +135,10 @@ line <- readLines(con = stdin(),1)
 
 
 ## ----------------- Part 6: Initializing Pameters -----------------
-#  In this part of the exercise, you will be starting to implment a two
+#  In this part of the exercise, you will be starting to implment a three
 #  layer neural network that classifies digits. You will start by
 #  implementing a function to initialize the weights of the neural network
-#  (randInitializeWeights.m)
+#  (randInitializeWeights.R)
 
 cat(sprintf('\nInitializing Neural Network Parameters ...\n'))
 
@@ -154,7 +152,7 @@ initial_nn_params <- c(initial_Theta1,initial_Theta2)
 ## --------------- Part 7: Implement Backpropagation ---------------
 #  Once your cost matches up with ours, you should proceed to implement the
 #  backpropagation algorithm for the neural network. You should add to the
-#  code you've written in nnCostFunction.m to return the partial
+#  code you've written in nnCostFunction.R to return the partial
 #  derivatives of the parameters.
 #
 cat(sprintf('\nChecking Backpropagation... \n'))
@@ -197,10 +195,6 @@ line <- readLines(con = stdin(),1)
 #
 cat(sprintf('\nTraining Neural Network... \n'))
 
-#  After you have completed the assignment, change the MaxIter to a larger
-#  value to see how more training helps.
-#options <- optimset('MaxIter', 50)
-
 #  You should also try different values of lambda
 lambda <- 1
 
@@ -211,11 +205,14 @@ costFunction <- nnCostFunction(input_layer_size, hidden_layer_size,
 gradFunction <- nnGradFunction(input_layer_size, hidden_layer_size, 
                                num_labels, X, y, lambda) #over nn_params
 
-# Now, costFunction is a function that takes in only one argument (the
+# Now, costFunction and gradFunction are functions that take in only one argument (the
 # neural network parameters)
 
-#lbfgsb3 works like fmincg
+# lbfgsb3 works like fmincg (fast)
 library(lbfgsb3)
+
+# After you have completed the assignment, change the maxit to a larger
+# value to see how more training helps.
 opt <- lbfgsb3_(initial_nn_params, fn= costFunction, gr=gradFunction,
                   control = list(trace=1,maxit=50))
 
@@ -271,7 +268,7 @@ for (i in 1:m){
     displayData(X[rp[i], ])
 
     pred <- predict(Theta1, Theta2, X[rp[i],])
-    cat(sprintf('\nNeural Network Prediction: %d (digit %d)\n', pred %% 10 ,pred %% 10))
+    cat(sprintf('\nNeural Network Prediction: %d (y %d) (digit %d)\n', pred  , y[rp[i]]  ,pred %% 10))
 
     # line <- readLines(con = stdin(),1)
     #cat(sprintf('Program paused. Press enter to continue.\n')

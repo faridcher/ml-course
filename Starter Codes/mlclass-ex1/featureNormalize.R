@@ -27,6 +27,7 @@ featureNormalize <- function(X) {
   #
   
   
+  
   list(X_norm = X_norm, mu = mu, sigma = sigma)
   # ------------------------------------------------------------
   

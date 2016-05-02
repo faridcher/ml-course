@@ -42,7 +42,7 @@ plotData(X, y,axLables = c('Microchip Test 1','Microchip Test 2'),
 #  linearly separable. However, you would still like to use logistic
 #  regression to classify the data points.
 #
-#  To do so, you introduce more features to use -- in particular, you add
+#  To do so, you introduce more features to use, in particular, you add
 #  polynomial features to our data matrix (similar to polynomial
 #  regression).
 #

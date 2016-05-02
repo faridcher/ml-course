@@ -1,11 +1,8 @@
 displayData  <- function(X, example_width = round(sqrt(dim(X)[2]))) {
   #DISPLAYDATA Display 2D data in a nice grid
-  #   [h, display_array] <- DISPLAYDATA(X, example_width) displays 2D data
+  #   DISPLAYDATA(X, example_width) displays 2D data
   #   stored in X in a nice grid. It returns the figure handle h and the
   #   displayed array if requested.
-  
-  # Gray Image
-  #colormap(gray)
   
   # Compute rows, cols
   m <- dim(X)[1]

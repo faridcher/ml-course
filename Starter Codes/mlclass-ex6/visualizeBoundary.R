@@ -21,7 +21,6 @@ visualizeBoundary <- function (X, y, model, varargin) {
   }
   
   # Plot the SVM boundary
-  #list(X1=X1,X2=X2,vals=vals)
   contour(
     x1plot,x2plot, t(vals),
     levels = 1, col = "blue",add = TRUE

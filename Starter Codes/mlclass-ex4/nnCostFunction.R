@@ -1,10 +1,55 @@
 nnCostFunction  <-
-  function(input_layer_size, hidden_layer_size, num_labels,
-           X, y, lambda) {
+  function(input_layer_size, hidden_layer_size, num_labels,X, y, lambda) {
     #NNCOSTFUNCTION Implements the neural network cost function for a two layer
     #neural network which performs classification
-    #   [J grad] <- NNCOSTFUNCTON(nn_params, hidden_layer_size, num_labels, ...
-    #   X, y, lambda) computes the cost and gradient of the neural network. The
+    #   J <- NNCOSTFUNCTON(hidden_layer_size, num_labels, ...
+    #   X, y, lambda)(nn_params) computes the cost of the neural network. The
+    #   parameters for the neural network are "unrolled" into the vector
+    #   nn_params and need to be converted back into the weight matrices.
+    #
+    
+    function(nn_params) {
+      # Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
+      # for our 2 layer neural network
+      Theta1 <-
+        matrix(nn_params[1:(hidden_layer_size * (input_layer_size + 1))],
+               hidden_layer_size, (input_layer_size + 1))
+      
+      Theta2 <-
+        matrix(nn_params[(1 + (hidden_layer_size * (input_layer_size + 1))):length(nn_params)],
+               num_labels, (hidden_layer_size + 1))
+      
+      # Setup some useful variables
+      m <- dim(X)[1]
+      
+      # You need to return the following variable correctly
+      J <- 0
+      
+      # ----------------------- YOUR CODE HERE -----------------------
+      # Instructions: You should complete the code by working through the
+      #               following parts.
+      #
+      # Part 1: Feedforward the neural network and return the cost in the
+      #         variable J. After implementing Part 1, you can verify that your
+      #         cost function computation is correct by verifying the cost
+      #         computed in ex4.R
+      #
+      # Part 2: Implement regularization with the cost function.
+      #
+      #
+      
+      
+      J
+    }
+  }
+
+nnGradFunction  <-
+  function(input_layer_size, hidden_layer_size, num_labels,
+           X, y, lambda) {
+    #nnGradFunction Implements the neural network gradient function for a two layer
+    #neural network which performs classification
+    #   grad <- nnGradFunction(hidden_layer_size, num_labels, ...
+    #   X, y, lambda)(nn_params) computes the gradient of the neural network. The
     #   parameters for the neural network are "unrolled" into the vector
     #   nn_params and need to be converted back into the weight matrices.
     #
@@ -26,7 +71,6 @@ nnCostFunction  <-
       m <- dim(X)[1]
       
       # You need to return the following variables correctly
-      J <- 0
       Theta1_grad <- matrix(0,dim(Theta1)[1],dim(Theta1)[2])
       Theta2_grad <- matrix(0,dim(Theta2)[1],dim(Theta2)[2])
       
@@ -34,10 +78,7 @@ nnCostFunction  <-
       # Instructions: You should complete the code by working through the
       #               following parts.
       #
-      # Part 1: Feedforward the neural network and return the cost in the
-      #         variable J. After implementing Part 1, you can verify that your
-      #         cost function computation is correct by verifying the cost
-      #         computed in ex4.R
+      # Part 1: Feedforward the neural network
       #
       # Part 2: Implement the backpropagation algorithm to compute the gradients
       #         Theta1_grad and Theta2_grad. You should return the partial derivatives of
@@ -50,11 +91,11 @@ nnCostFunction  <-
       #               binary vector of 1's and 0's to be used with the neural network
       #               cost function.
       #
-      #         Hint: We recomm} implementing backpropagation using a for-loop
+      #         Hint: We recommend implementing backpropagation using a for-loop
       #               over the training examples if you are implementing it for the
       #               first time.
       #
-      # Part 3: Implement regularization with the cost function and gradients.
+      # Part 3: Implement regularization with the gradients.
       #
       #         Hint: You can implement this around the code for
       #               backpropagation. That is, you can compute the gradients for
@@ -62,35 +103,6 @@ nnCostFunction  <-
       #               and Theta2_grad from Part 2.
       #
       
-      
-      
-      J
-    }
-  }
-
-nnGradFunction  <-
-  function(input_layer_size, hidden_layer_size, num_labels,
-           X, y, lambda) {
-    function(nn_params) {
-      # Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
-      # for our 2 layer neural network
-      Theta1 <-
-        matrix(nn_params[1:(hidden_layer_size * (input_layer_size + 1))],
-               hidden_layer_size, (input_layer_size + 1))
-      
-      Theta2 <-
-        matrix(nn_params[(1 + (hidden_layer_size * (input_layer_size + 1))):length(nn_params)],
-               num_labels, (hidden_layer_size + 1))
-      
-      # Setup some useful variables
-      m <- dim(X)[1]
-      
-      # You need to return the following variables correctly
-      J <- 0
-      Theta1_grad <- matrix(0,dim(Theta1)[1],dim(Theta1)[2])
-      Theta2_grad <- matrix(0,dim(Theta2)[1],dim(Theta2)[2])
-      
-      # ----------------------- YOUR CODE HERE -----------------------
       
       grad
       # -------------------------------------------------------------

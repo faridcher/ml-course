@@ -76,7 +76,7 @@ theta <- c(1,1)
 grad <- linearRegGradFunction(cbind(1,X), y, 1)(theta)
 
 cat(sprintf('Gradient at theta = (1,1):  [%f; %f] \n
-            (this value should be about [-15.303016; 598.250744])\n',
+(this value should be about [-15.303016; 598.250744])\n',
             grad[1], grad[2]))
 
 cat(sprintf('Program paused. Press enter to continue.\n'))
@@ -120,7 +120,8 @@ error_train <- lC$error_train
 error_val <- lC$error_val
 rm(lC)
 
-plot(rbind(1:m,1:m),rbind(error_train,error_val), type="n",
+#setup plot
+plot(c(1:m,1:m),c(error_train,error_val), type="n",
      main='Learning curve for linear regression',
      xlab="Number of training examples", ylab="Error")
 lines(1:m, error_train, type="l",col="blue")
@@ -195,7 +196,7 @@ error_val <- lC$error_val
 rm(lC)
 
 
-plot(rbind(1:m,1:m),rbind(error_train,error_val), type="n",
+plot(c(1:m,1:m),c(error_train,error_val), type="n",
      main=sprintf('Polynomial Regression \nLearning Curve (lambda <- %f)', lambda),
      xlab='Number of training examples', ylab="Error")
 lines(1:m, error_train, type="l",col="blue",lwd=2)
@@ -224,13 +225,12 @@ error_train <- vC$error_train
 error_val <- vC$error_val
 rm(vC)
 
-plot(rbind(lambda_vec,lambda_vec),rbind(error_train,error_val), type="n",
-     main=sprintf('Polynomial Regression \nLearning Curve (lambda <- %f)', lambda),
+plot(c(lambda_vec,lambda_vec),c(error_train,error_val), type="n",
      xlab='lambda', ylab="Error")
 lines(lambda_vec, error_train, type="l",col="blue",lwd=2)
 lines(lambda_vec, error_val, type="l", col="green", lwd=2)
-#legend("topright",c("Train","Cross Validation"), 
-       #col=c("blue","green"), lty=1)
+legend("topleft",c("Train","Cross Validation"), 
+       col=c("blue","green"), lty=1)
 
 cat(sprintf('lambda\t\tTrain Error\tValidation Error\n'))
 for (i in 1:length(lambda_vec))

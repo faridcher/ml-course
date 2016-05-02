@@ -39,8 +39,6 @@ cat(sprintf('Visualizing example dataset for outlier detection.\n\n'))
 
 #  The following command loads the dataset. You should now have the
 #  variables X, Xval, yval in your environment
-#data <- readMat('ex8data1.mat')
-#save(data,file="ex8data1.Rda")
 load("ex8data1.Rda")
 list2env(data,.GlobalEnv)
 rm(data)
@@ -63,7 +61,7 @@ line <- readLines(con = stdin(),1)
 #
 cat(sprintf('Visualizing Gaussian fit.\n\n'))
 
-#  Estimate my and sigma2
+#  Estimate mu and sigma2
 eG <- estimateGaussian(X)
 mu <- eG$mu
 sigma2 <- eG$sigma2
@@ -91,15 +89,13 @@ F1 <- sT$bestF1
 
 cat(sprintf('Best epsilon found using cross-validation: %e\n', epsilon))
 cat(sprintf('Best F1 on Cross Validation Set:  %f\n', F1))
-cat(sprintf('   (you should see a value epsilon of about 8.99e-05)\n\n'))
+cat(sprintf('(you should see a value epsilon of about 8.99e-05)\n\n'))
 
 #  Find the outliers in the training set and plot the
 outliers <- which(p < epsilon)
 
 #  Draw a red circle around those outliers
-#hold on
 points(X[outliers, 1], X[outliers, 2], col="red", lwd=2, cex=2 )
-#hold off
 
 cat(sprintf('Program paused. Press enter to continue.\n'))
 line <- readLines(con = stdin(),1)
@@ -112,8 +108,6 @@ line <- readLines(con = stdin(),1)
 
 #  Loads the second dataset. You should now have the
 #  variables X, Xval, yval in your environment
-#data <- readMat('ex8data2.mat')
-#save(data,file="ex8data2.Rda")
 load("ex8data2.Rda")
 list2env(data,.GlobalEnv)
 rm(data)
@@ -122,6 +116,7 @@ rm(data)
 eG <- estimateGaussian(X)
 mu <- eG$mu
 sigma2 <- eG$sigma2
+rm(eG)
 
 #  Training set 
 p <- multivariateGaussian(X, mu, sigma2)

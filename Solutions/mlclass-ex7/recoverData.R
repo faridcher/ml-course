@@ -13,12 +13,12 @@ recoverData <- function(Z, U, K) {
   # Instructions: Compute the approximation of the data by projecting back
   #               onto the original space using the top K eigenvectors in U.
   #
-  #               For the i-th example Z(i,:), the (approximate)
+  #               For the i-th example Z[i,], the (approximate)
   #               recovered data for dimension j is given as follows:
-  #                    v <- Z(i, :)'
-  #                    recovered_j <- v' * U(j, 1:K)'
+  #                    v <- t(Z[i,])
+  #                    recovered_j <- t(v) %*% t(U[j, 1:K])
   #
-  #               Notice that U(j, 1:K) is a row vector.
+  #               Notice that U[j, 1:K] is a row vector.
   #
   
   X_rec <- Z %*% t(U[,1:K])

@@ -20,6 +20,9 @@ gradientDescent <- function(X, y, theta, alpha, num_iters) {
     #       of the cost function (computeCost) and gradient here.
     #
     
+    
+  }
+  
   list(theta = theta, J_history = J_history, theta_history = theta_history)
   # ------------------------------------------------------------
 }

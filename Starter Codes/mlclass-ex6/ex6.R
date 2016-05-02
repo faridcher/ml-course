@@ -52,10 +52,6 @@ line <- readLines(con = stdin(),1)
 #  decision boundary learned.
 #
 
-# Load from ex6data1: 
-# You will have X, y in your environment
-#load('ex6data1.Rda')
-
 cat(sprintf('\nTraining Linear SVM ...\n'))
 
 # You should try to change the C value below and see how the decision
@@ -79,7 +75,7 @@ sigma <- 2
 sim <- gaussianKernel(sigma)(x1, x2)
 
 cat(sprintf('Gaussian Kernel between x1 <- [1; 2; 1], x2 <- [0; 4; -1], sigma <- 0.5 :\n
-             \t%f\n(this value should be about 0.324652)\n', sim))
+\t%f\n(this value should be about 0.324652)\n', sim))
 
 cat(sprintf('Program paused. Press enter to continue.\n'))
 line <- readLines(con = stdin(),1)
@@ -112,9 +108,6 @@ cat(sprintf('\nTraining SVM with RBF Kernel (this may take 1 to 2 minutes) ...\n
 
 # Load from ex6data2: 
 # You will have X, y in your environment
-
-#data <- readMat('ex6data2.mat')
-#save(data, file="ex6data2.Rda")
 load("ex6data2.Rda")
 list2env(data,.GlobalEnv)
 rm(data)
@@ -139,8 +132,6 @@ cat(sprintf('Loading and Visualizing Data ...\n'))
 
 # Load from ex6data3: 
 # You will have X, y in your environment
-#data <- readMat('ex6data3.mat')
-#save (data,file="ex6data3.Rda")
 load("ex6data3.Rda")
 list2env(data,.GlobalEnv)
 rm(data)

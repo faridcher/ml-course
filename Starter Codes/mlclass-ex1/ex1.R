@@ -72,7 +72,7 @@ computeCost(X, y, theta)
 
 # run gradient descent
 gd <- gradientDescent(X, y, theta, alpha, iterations)
-#Decompose list (gd) variables into global env
+#Decompose list (gd) variables into global env variables
 theta <- gd$theta
 J_history <- gd$J_history
 theta_history <- gd$theta_history
@@ -83,10 +83,9 @@ cat('Theta found by gradient descent: ')
 cat(sprintf('%f %f \n', theta[1], theta[2]))
 
 # Plot the linear fit
-##hold on # keep previous plot visible
+# keep previous plot visible
 lines(X[, 2], X  %*% theta, col="blue")
 legend("bottomright", c('Training data', 'Linear regression'), pch=c(4,NA),col=c("red","blue"), lty=c(NA,1) )
-##hold off # don't overlay any more plots on this figure
 
 # Predict values for population sizes of 35,000 and 70,000
 predict1 <- c(1, 3.5) %*% theta
@@ -114,9 +113,6 @@ for (i in 1:length(theta0_vals)) {
     }
 }
 
-
-# Because of the way meshgrids work in the surf command, we need to
-# transpose J_vals before calling surf, or else the axes will be flipped
 #interactive 3D plot
 #install.packages("rgl")
 library(rgl) 
@@ -134,11 +130,16 @@ points3d(theta_history[, 1], theta_history[, 2], J_history+10,
 lines3d(theta_history[, 1], theta_history[, 2], J_history+10, col="red")
 
 # Contour plot
-# Plot J_vals as 15 contours spaced logarithmically between 0.01 and 100
-logspace <- function( d1, d2, n) return(exp(log(10)*seq(d1, d2, length.out=n)))
-contour(theta0_vals, theta1_vals, J_vals, levels = logspace(-2, 3, 20), #
+# Plot J_vals as 20 contours spaced logarithmically between 0.01 and 100
+# logarithmic contours are denser near the center
+logspace <- function( d1, d2, n) 
+            return(exp(log(10)*seq(d1, d2, length.out=n)))
+            #or return(10^seq(d1, d2, length.out=n))
+
+contour(theta0_vals, theta1_vals, J_vals, levels = logspace(-2, 3, 20), 
         xlab=expression(theta_0),
-        ylab=expression(theta_1),drawlabels = FALSE)
+        ylab=expression(theta_1),
+        drawlabels = FALSE)
 
 points(theta[1], theta[2], pch=4, cex=2,col="red",lwd=2)
 points(theta_history[, 1], theta_history[, 2], col="red",cex=.2,lwd=1,pch=19)

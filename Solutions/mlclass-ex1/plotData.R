@@ -5,14 +5,14 @@ plotData <- function (x, y) {
   
   # ---------------------- YOUR CODE HERE ----------------------
   # Instructions: Plot the training data into a figure using the
-  #               "figure" and "plot" commands. Set the axes labels using
-  #               the "xlabel" and "ylabel" commands. Assume the
-  #               population and revenue data have been passed in
+  #               "plot" command. Set the axes labels using
+  #               the "xlab" and "ylab" parameters of plot function. 
+  #               Assume the population and revenue data have been passed in
   #               as the x and y arguments of this function.
   #
-  # Hint: You can use the 'rx' option with plot to have the markers
+  # Hint: You can use the pch=4 and col="red" options with plot to have the markers
   #       appear as red crosses. Furthermore, you can make the
-  #       markers larger by using plot(..., 'rx', 'MarkerSize', 10)
+  #       markers larger by using plot(..., cex=1.1). cex stands for character expansion
   
   plot(
     x, y, col = "red", pch = 4,cex = 1.1,lwd = 2,

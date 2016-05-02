@@ -65,8 +65,6 @@ X <- cbind(rep(1,m),X)
 X <- as.matrix(X)
 
 ## ---------------- Part 2: Gradient Descent ----------------
-
-# ---------------------- YOUR CODE HERE ----------------------
 # Instructions: We have provided you with the following starter
 #               code that runs gradient descent with a particular
 #               learning rate (alpha).
@@ -79,11 +77,9 @@ X <- as.matrix(X)
 #               different values of alpha and see which one gives
 #               you the best result.
 #
-#               Finally, you should complete the code at the }
+#               Finally, you should complete the code at the end
 #               to predict the price of a 1650 sq-ft, 3 br house.
 #
-# Hint: By using the '#hold on' command, you can plot multiple
-#       graphs on the same figure.
 #
 # Hint: At prediction, make sure you do the same feature normalization.
 #
@@ -100,9 +96,9 @@ theta <- rep(0,3)
 gDM <- gradientDescentMulti(X, y, theta, alpha , num_iters)
 theta <- gDM$theta
 J_history <- gDM$J_history
+rm(gDM)
 
 # Plot the convergence graph
-#figure
 plot(1:length(J_history), J_history, type="l", col="blue", lwd=2, cex=.1,
      xlab="Number of Iterations", ylab="Cost J")
 
@@ -110,19 +106,13 @@ plot(1:length(J_history), J_history, type="l", col="blue", lwd=2, cex=.1,
 cat('Theta computed from gradient descent: \n')
 print(theta)
 
-# theta <- zeros(3, 1)
-# [theta,  J_history] <- gradientDescentMulti(X, y,  theta,  alpha/1000.0,  num_iters)
-# plot(1:numel(J_history), J_history, '-k', 'LineWidth', 2)
-# cat('Theta computed from gradient descent: \n')
-# cat(' #f \n', theta)
-# cat('\n')
-
-
 # Estimate the price of a 1650 sq-ft, 3 br house
 # ---------------------- YOUR CODE HERE ----------------------
 # Recall that the first column of X is all-ones. Thus, it does
 # not need to be normalized.
-price <- cbind(1, (1650-mu[1])/sigma[1], (3-mu[2])/sigma[2]) %*% theta # You should change this
+
+price <- cbind(1, (1650-mu[1])/sigma[1], (3-mu[2])/sigma[2]) %*% theta
+
 # ------------------------------------------------------------
 
 cat(sprintf('Predicted price of a 1650 sq-ft, 3 br house (using gradient descent):\n $%f\n', price))
@@ -137,10 +127,10 @@ X <- as.matrix(X)
 library(rgl)
 
 open3d()
-plot3d(X[,2],X[,3],y, xlab= "sq-ft of room", ylab="#bedroom", zlab="price", col="blue",  
+plot3d(X[,2],X[,3],y, 
+       xlab= "sq-ft of room", ylab="#bedroom", zlab="price", col="blue",  
        type="s",size=1.5, main="Result of Gradient Descent")
 
-##hold on
 xx <- seq(0,5000,length.out=25)
 yy <- seq(1,5,length.out = 25)
 zz <- matrix(0,length(xx),length(yy))
@@ -156,16 +146,10 @@ zcol  = cut(zz, nbcol)
 
 persp3d(xx,yy,zz, add = TRUE, col=color[zcol],alpha=.6)
 
-#legend3d("topright", leg}=c("2D Points", "3D Points"))
-
 cat('Program paused. Press enter to continue.\n')
 line <- readLines(con = stdin(),1)
 
 ## ---------------- Part 3: Normal Equations ----------------
-
-cat('Solving with normal equations...\n')
-
-# ---------------------- YOUR CODE HERE ----------------------
 # Instructions: The following code computes the closed form
 #               solution for linear regression using the normal
 #               equations. You should complete the code in
@@ -175,6 +159,7 @@ cat('Solving with normal equations...\n')
 #               to predict the price of a 1650 sq-ft, 3 br house.
 #
 
+cat('Solving with normal equations...\n')
 ## Load Data
 data <- read.table('ex1data2.txt',sep =',')
 X <- data[, 1:2]
@@ -194,7 +179,9 @@ print(theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house
 # ---------------------- YOUR CODE HERE ----------------------
-price <- c(1, 1650, 3) %*% theta # You should change this
+
+price <- c(1, 1650, 3) %*% theta
+
 # ------------------------------------------------------------
 
 cat(sprintf('Predicted price of a 1650 sq-ft, 3 br house (using normal equations):\n $%f\n', price))
