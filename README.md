@@ -60,6 +60,5 @@ A few screenshots of the plots produced in R:
 14. Large scale machine learning, stochastic and mini-batch gradient descent, online learning, map reduce
 
 
-## License
-This work is licensed under a [Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 [https://github.com/faridcher/faridcher.github.io/blob/master/ml-course/Snapshots/AnomolyDetection.png]: https://github.com/faridcher/faridcher.github.io/blob/master/ml-course/Snapshots/AnomolyDetection.png
