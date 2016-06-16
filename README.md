@@ -2,11 +2,11 @@
 
 This is the R equivalent version of all assignments of the online machine learning course (MOOC) offered by Stanford university and instructed by [Andrew NG](http://www.andrewng.org). The course materials including lectures and presentation PDFs, can be downloaded all at once from [Coursera website](https://class.coursera.org/ml-003/lecture). 
 
-One can accomplish the assignment and quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning), although the assignments still MUST be submitted in Octave/Matlab. R submission is not yet supported. This repository is the first step to bring this excellent online course to the great community of R users.
+One can solve the assignment and quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning), although the assignments still MUST be submitted in Octave/Matlab. R submission is not yet supported. This repository is the first step to bring this excellent online course to the great community of R users.
 
 The code provides the starter code and infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules. If you had any question regarding the assignments, fill free to ask them here in Github issues.
 
-To accomplish the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions (pdf) are also included in this repository. There is a RStudio project file in each exercise folder that is a proper starting point to complete the codes.
+To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions (pdf) are also included in this repository. There is a RStudio project file in each exercise folder that is a proper starting point to complete the codes.
 
 The "Solutions" folder has the solutions to the exercises. The `.Rda` or `.txt` data files are not included in this folder.
 
@@ -23,9 +23,9 @@ Stemmer software (portStemmer.m) is used in the exercise 6 (spam classification)
 
 `raster` package is used to produce the plot of the bird in exercise 7.
 
-Last but not the least is the Octave/Matlab `pinv` function. There is a `ginv` function in `MASS` package that doesn't produce the same exact result of `pinv`. Therefore a slightly modified version of MASS `ginv` is included in the starter codes. `MASS` package is not needed to be installed.
+Last but not the least is the Octave/Matlab `pinv` function. There is a `ginv` function in `MASS` package that doesn't produce the same exact result of Octave/Matlab `pinv`. Therefore a slightly modified version of MASS `ginv` is included in the starter codes. `MASS` package is not needed to be installed.
 
-To wrap up, before starting to code make sure the following 4 packages are installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
+To wrap up, before starting to code make sure the following 4 packages are pre-installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
 
 ## Future plans
 In near future I plan to make it possible to submit assignments directly from R. So R programmers can take the course too.
