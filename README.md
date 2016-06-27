@@ -1,6 +1,6 @@
 ## Introduction
 
-This is the R equivalent version of all assignments of the online machine learning course (MOOC) offered by Stanford university and instructed by [Andrew NG](http://www.andrewng.org). The course materials including lectures and presentation PDFs, can be downloaded all at once from [Coursera website](https://class.coursera.org/ml-003/lecture). 
+This is the R equivalent version of all assignments of the online machine learning course (MOOC) offered by Stanford university and instructed by [Andrew NG](http://www.andrewng.org). The course materials including lectures and presentation PDFs, can be downloaded all at once from [Coursera website](https://class.coursera.org/ml-003/lecture). The course [wiki page](https://share.coursera.org/wiki/index.php/ML:Main) is accessible too. 
 
 One can solve the assignment and pass the quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning).  This repository is the an attempt to bring this excellent online course to the great community of R users. Assignments can be submitted directly from R.
 
@@ -66,7 +66,5 @@ A few screenshots of the plots produced in R:
 12. Anomaly detection, supervised learning
 13. Recommender systems, Collaborative filtering
 14. Large scale machine learning, stochastic and mini-batch gradient descent, online learning, map reduce
-
-
 
 [https://github.com/faridcher/faridcher.github.io/blob/master/ml-course/Snapshots/AnomolyDetection.png]: https://github.com/faridcher/faridcher.github.io/blob/master/ml-course/Snapshots/AnomolyDetection.png
