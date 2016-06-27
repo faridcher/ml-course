@@ -29,7 +29,7 @@ grad <- function(X, y) {
 
     # You need to return the following variable correctly
     grad <- matrix(0,dim(as.matrix(theta)))
-    
+    m <- length(y)
     # ----------------------- YOUR CODE HERE -----------------------
     # Instructions: Compute the partial derivatives and set grad to the partial
     #               derivatives of the cost w.r.t. each parameter in theta
