@@ -36,6 +36,8 @@ Two more packages namely `httr` for `POST()` function and `jsonlite` for `toJSON
 
 `install.packages(c('jsonlite', 'httr'))`
 
+In order to submit, after completing each assignment, set the working directory to the root folder of the corresponding assignment e.g. `setwd('D:\MachineLearningMOOC\StarterCodes\mlclass-ex1')`. Then `source` the `submit.r` in R and type `submit()` in the R console.
+
 Try not to use my solutions and submit your own efforts as it is against the course rules. In future I may remove the solutions from the repository, so the submissions will be all your own efforts.
 
 ## Screen-shots
