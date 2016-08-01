@@ -68,5 +68,3 @@ A few screen-shots of the plots produced in R:
 12. Anomaly detection, supervised learning
 13. Recommender systems, Collaborative filtering
 14. Large scale machine learning, stochastic and mini-batch gradient descent, online learning, map reduce
-
-If you like the project simply star it.
