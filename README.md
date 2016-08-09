@@ -2,13 +2,13 @@
 
 This is the R equivalent version of all assignments of the online machine learning course (MOOC) offered by Stanford university and instructed by [Andrew NG](http://www.andrewng.org). The course materials including lectures and presentation PDFs, can be downloaded all at once from [Coursera website](https://class.coursera.org/ml-003/lecture). The course [wiki page](https://share.coursera.org/wiki/index.php/ML:Main) is accessible too. 
 
-One can solve the assignment and pass the quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning). This repository is an attempt to bring this excellent online course to the great community of R users. 
+One can solve the assignment and pass the quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning). 
 
-The code provides the starter code and infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules and I will remove them in future. If you had any question regarding the assignments, fill free to ask them here in Github issues.
+The code provides the starter code and the infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules and I will remove them in future. If you had any question regarding the assignments, fill free to ask them here using Github issues.
 
-To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions (pdf) are also included in this repository. There is a RStudio project file in each exercise folder that is a proper starting point to complete the codes. Then the assignments can be submitted directly from R.
+To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions in pdf format are also included in this repository. There is a RStudio project file in each exercise folder that is a proper starting point to start coding. Upon the completion, the assignments can be submitted directly from R.
 
-The "Solutions" folder has the solutions to the exercises. The `.Rda` or `.txt` data files are not included in this folder.
+The "Solutions" folder has the solutions to the exercises. Note that the `.Rda` or `.txt` data files are not included in this folder.
 
 ## Dependencies (3rd party packages)
 I have tried my best not to use 3rd party packages in the starter codes. However to produce similar results and plots to Octave/Matlab I had to use a few packages although they are not many. 
