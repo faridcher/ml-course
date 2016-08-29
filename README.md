@@ -4,7 +4,7 @@ This is the R equivalent version of all assignments of the online machine learni
 
 One can solve the assignment and pass the quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning). 
 
-The code provides the starter code and the infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules and I will remove them in future. If you had any question regarding the assignments, fill free to ask them here using Github issues.
+The code provides the starter code and the infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules and I will remove them in future. If you had any question regarding the assignments, fill free to ask it here using Github issues.
 
 To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions in pdf format are also included in this repository. There is a RStudio project file in each exercise folder that is a proper starting point to start coding. Upon the completion, the assignments can be submitted directly from R.
 
