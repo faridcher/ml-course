@@ -6,7 +6,7 @@ One can solve the assignment and pass the quizzes and earn a certificate from [C
 
 The code provides the starter code and the infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules and I will remove them in future. If you had any question regarding the assignments, fill free to ask it here using Github issues.
 
-To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions in pdf format are also included in this repository. There is a RStudio project file in each exercise folder that is a proper starting point to start coding. Upon the completion, the assignments can be submitted directly from R.
+To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions in pdf format are also included in this repository. There is an RStudio project file in each exercise folder that is a proper starting point to start coding. Upon the completion, the assignments can be submitted directly from R.
 
 The "Solutions" folder has the solutions to the exercises. Note that the `.Rda` or `.txt` data files are not included in this folder.
 
@@ -15,7 +15,7 @@ I have tried my best not to use 3rd party packages in the starter codes. However
 
 [rgl](https://cran.r-project.org/package=rgl) package is used to produce the 3D scatter plots and surface plots in the exercises.
 
-There are many optimization tasks within the assignments. Most of them were not large scale optimization problem and they were optimized using built-in `optim` function of R. However to solve optimization problems in exercise 4 and exercise 8, I have used a slightly modified version of [lbfgsb3](https://cran.r-project.org/package=lbfgsb3) package. One should first install the package and then source the `lbfgsb3_.R`. The sourcing is done in the starter codes automatically. `fmincg` or `fminunc` optimization functions in Octave/Matlab take one function as input that computes cost and gradient simultaneously. However cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions in R individually. So I have separated the cost and gradient functions in the starter codes.
+There are many optimization tasks within the assignments. Most of them were not large-scale optimization problem and they were optimized using built-in `optim` function of R. However to solve optimization problems in exercise 4 and exercise 8, I have used a slightly modified version of [lbfgsb3](https://cran.r-project.org/package=lbfgsb3) package. One should first install the package and then source the `lbfgsb3_.R`. The sourcing is done in the starter codes automatically. `fmincg` or `fminunc` optimization functions in Octave/Matlab take one function as input that computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions in R individually. So I have separated the cost and gradient functions in the starter codes.
 
 Stemmer software (portStemmer.m) is used in the exercise 6 (spam classification) and the `portStemmer` function is called from `processEmail` function. Instead of re-implementing `portStemmer` function in R, I have used [SnowballC](https://cran.r-project.org/package=SnowballC) package that produces the same results as with the case of portStemmer.m.
 
@@ -25,20 +25,20 @@ Stemmer software (portStemmer.m) is used in the exercise 6 (spam classification)
 
 Last but not the least is the Octave/Matlab `pinv` function. There is a `ginv` function in `MASS` package that doesn't produce the same exact result of Octave/Matlab `pinv`. Therefore a slightly modified version of MASS `ginv` is included in the starter codes. `MASS` package is not needed to be installed.
 
-To wrap up, before starting to code make sure the following 6 packages are pre-installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
+To wrap up, before starting to code make sure the following 4 packages are pre-installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
 
 `install.packages(c('rgl','lbfgsb3','SnowballC','raster'))`
 
 ## Submission
-Now it is possible to submit assignments directly from R. So R programmers can take the course too. I submitted all assignments to coursera for testing and  the scores were 100%.
+Now it is possible to submit assignments directly from R. So R programmers can take the course too. I submitted all assignments to Coursera for testing and  the scores were 100%.
 
 Two more packages namely `httr` for `POST()` function and `jsonlite` for `toJSON()` function are needed to be installed before submission.
 
 `install.packages(c('jsonlite', 'httr'))`
 
-In order to submit, after completing each assignment, set the working directory to the root folder of the corresponding assignment e.g. `setwd('D:\MachineLearningMOOC\StarterCodes\mlclass-ex1')`. Then `source` the `submit.r` in R and type `submit()` in the R console.
+After completing each assignment, in order to submit,  set the working directory to the root folder of the corresponding assignment e.g. `setwd('D:\MachineLearningMOOC\StarterCodes\mlclass-ex1')`. Then `source` the `submit.r` and type `submit()` in the R console.
 
-Try not to use my solutions and submit your own efforts as it is against the course rules. In future I may remove the solutions from the repository, so the submissions will be all your own efforts.
+Try not to use my solutions and submit your own efforts as it is against the course rules. In future, I may remove the solutions from the repository, so the submissions will be all your own efforts.
 
 ## Screen-shots
 A few screen-shots of the plots produced in R:
