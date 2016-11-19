@@ -6,17 +6,19 @@ To download lecture videos visit the course website:
 - [Course website](https://www.coursera.org/learn/machine-learning)
 - [The course wiki page](https://share.coursera.org/wiki/index.php/ML:Main)
 
-This repo provides the starter code to solve the assignment in R statistical software. 
-The completed assignments are available too, but they will be removed them in future so feel free to fork. 
+This repo provides the starter code to solve the assignment in R statistical software; the completed assignments are available in the Solutions folder.
 
-To solve the assignments simply fill the parts of the code that is written `"YOUR CODE HERE"`. 
+Do these steps to complete the assignments:
+1. View the lectures 
+2. Read the instructions (pdf)
+3. Use the **Starter** folder and fill the parts of the code that is written `"YOUR CODE HERE"`
+4. If you couldn't solve yourself, get help from the **Solutions** folder
+5. Submit
 
 ## Dependencies
 In order to produce similar results and plots to Octave/Matlab, you should install a few packages:
 
 - `rgl` package is used to produce the 3D scatter plots and surface plots in the exercises.
-
-- `lbfgsb3`: There are many optimization tasks within the assignments. Most of them were not large-scale optimization problem and they were optimized using built-in `optim` function of R. However to solve optimization problems in exercise 4 and exercise 8, I have used a slightly modified version of [lbfgsb3](https://cran.r-project.org/package=lbfgsb3) package. One should first install the package and then source the `lbfgsb3_.R`. The sourcing is done in the starter codes automatically. `fmincg` or `fminunc` optimization functions in Octave/Matlab take one function as input that computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions in R individually. So I have separated the cost and gradient functions in the starter codes.
 
 - `SnowballC`: `portStemmer` function in this package has the same role of the `portStemmer.m`.
  
@@ -24,15 +26,20 @@ In order to produce similar results and plots to Octave/Matlab, you should insta
 
 - `jsonlite` and `httr` packages are needed for submission.
 
-Last but not the least is the Octave/Matlab `pinv` function. There is a `ginv` function in `MASS` package that doesn't produce the same exact result of Octave/Matlab `pinv`. Therefore a slightly modified version of MASS `ginv` is included in the starter codes. `MASS` package is not needed to be installed.
+- `pinv.R`: The `ginv` function, generalized inverse, in `MASS` package doesn't produce the same exact result of the Matlab `pinv` (pseudo-inverse). `pinv.R` is the modified version of MASS `ginv` to produce the same effect of the MATLAB `pinv`. For more info see [the stackoverflow discussion](http://stackoverflow.com/questions/36391548/r-ginv-and-matlab-pinv-produce-different-results)
+
+- `lbfgsb3_.R`: Certain optimization tasks could only be solved using `lbfgsb3` package, yet there are a few bugs in this packages. The purpose of `lbfgsb3_.R` is to address these bugs, which is used for exercise 4 and 8.
+Beware that `fmincg`/`fminunc` optimization functions in Matlab takes one function as input and computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions individually.
 
 Before starting to code, install the following packages:
 `install.packages(c('rgl','lbfgsb3','SnowballC','raster','jsonlite', 'httr'))`
 
+Note that you don't have to do anything mentioned above, just be informed.
+
 ## Submission
 After completing each assignment, `source` the `submit.r` and type `submit()` in the R console.
 
-I submitted my solutions to Coursera for testing and the scores were 100%. Please report any problem with submission. 
+I submitted the solutions to Coursera for testing and the scores were 100%. Please report any problem with submission. 
 
 ## Screen-shots
 A few screen-shots of the plots produced in R:
