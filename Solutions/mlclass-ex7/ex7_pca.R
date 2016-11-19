@@ -38,7 +38,6 @@ cat(sprintf('Visualizing example dataset for PCA.\n\n'))
 
 #  The following command loads the dataset. You should now have the
 #  variable X in your environment
-# library(R.matlab)
 load('ex7data1.Rda')
 list2env(data,.GlobalEnv)
 rm(data)
@@ -72,12 +71,11 @@ S <- diag(USV$d)
 
 #  Draw the eigenvectors centered at mean of data. These lines show the
 #  directions of maximum variations in the dataset.
-#hold on
 
 lines(rbind(t(mu),mu+1.5*S[1,1]*t(U[,1])),lwd=2)
 
 lines(rbind(t(mu),mu+1.5*S[2,2]*t(U[,2])), lwd=2)
-#hold off
+
 
 cat(sprintf('Top eigenvector: \n'))
 cat(sprintf(' U[,1] = %f %f \n', U[1,1],U[2,2]))
@@ -98,7 +96,8 @@ line <- readLines(con = stdin(),1)
 cat(sprintf('\nDimension reduction on example dataset.\n\n'))
 
 #  Plot the normalized dataset (returned from pca)
-plot(X_norm[, 1], X_norm[, 2], col='blue',xlim=c(-4,3),ylim=c(-4,3))
+plot(X_norm[, 1], X_norm[, 2], col='blue', asp=1)
+     #xlim = c(-4,3),ylim=c(-4,3))
 
 
 #  Project the data onto K = 1 dimension
@@ -141,7 +140,7 @@ line <- readLines(con = stdin(),1)
 #  Run PCA and visualize the eigenvectors which are in this case eigenfaces
 #  We display the first 36 eigenfaces.
 #
-cat(sprintf('\nRunning PCA on face dataset.\n (this mght take a minute or two ...)\n\n'))
+cat(sprintf('\nRunning PCA on face dataset.\n (this might take a minute or two ...)\n\n'))
 
 #  Before running PCA, it is important to first normalize X by subtracting
 #  the mean value from each feature

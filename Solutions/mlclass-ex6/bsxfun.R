@@ -1,3 +1,7 @@
+#A <- matrix(1:8,4,2)
+#B <- 1:4
+#bsxfun('+',B, A) == bsxfun('+',A, B)
+
 bsxfun <- function (func, x, y)
 {
   dim_fix <- function(x,y) {

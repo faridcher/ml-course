@@ -9,9 +9,7 @@ normalEqn <- function(X, y) {
   # Instructions: Complete the code to compute the closed form solution
   #               to linear regression and put the result in theta.
   #
-  library(MASS)
   theta <- pinv(t(X) %*% X) %*% t(X) %*% y
-  
   theta
   # ------------------------------------------------------------
   

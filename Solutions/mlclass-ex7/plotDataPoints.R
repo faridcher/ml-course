@@ -9,7 +9,7 @@ plotDataPoints <- function (X, idx, K, addto = TRUE) {
     points(X, col = rainbow(K + 1)[idx], lwd = 1.3)
   else
     plot(
-      X, col = rainbow(K + 1)[idx], lwd = 1.3, add = addto, type = "p"
+      X, col = rainbow(K + 1)[idx], lwd = 1.3, type = "p"
     )
   
 }

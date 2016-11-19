@@ -103,4 +103,3 @@ plotDecisionBoundary(theta, X, y, axLables = c('Microchip Test 1','Microchip Tes
 p <- predict(theta, X)
 
 cat(sprintf('Train Accuracy: %f\n', mean(p == y) * 100))
-

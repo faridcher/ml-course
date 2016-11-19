@@ -57,6 +57,7 @@ cat(sprintf('\nTraining Linear SVM ...\n'))
 # You should try to change the C value below and see how the decision
 # boundary varies (e.g., try C <- 1000)
 C <- 1
+Rprof()
 model <- svmTrain(X, y, C, linearKernel, 1e-3, 20)
 visualizeBoundaryLinear(X, y, model)
 
@@ -74,7 +75,7 @@ x2 <- c(0, 4, -1)
 sigma <- 2
 sim <- gaussianKernel(sigma)(x1, x2)
 
-cat(sprintf('Gaussian Kernel between x1 <- [1; 2; 1], x2 <- [0; 4; -1], sigma <- 0.5 :\n
+cat(sprintf('Gaussian Kernel between x1 = [1; 2; 1], x2 = [0; 4; -1], sigma = 0.5 :\n
 \t%f\n(this value should be about 0.324652)\n', sim))
 
 cat(sprintf('Program paused. Press enter to continue.\n'))
@@ -82,7 +83,7 @@ line <- readLines(con = stdin(),1)
 
 ## --------------- Part 4: Visualizing Dataset 2 -----------------
 #  The following code will load the next dataset into your environment and 
-#  plot the data. 
+#  plot the data.
 #
 
 cat(sprintf('Loading and Visualizing Data ...\n'))

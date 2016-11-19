@@ -1,44 +1,38 @@
 ## Introduction
 
-This is the R equivalent version of all assignments of the online machine learning course (MOOC) offered by Stanford university and instructed by [Andrew NG](http://www.andrewng.org). The course materials including lectures and presentation PDFs, can be downloaded all at once from [Coursera website](https://class.coursera.org/ml-003/lecture). The course [wiki page](https://share.coursera.org/wiki/index.php/ML:Main) is accessible too. 
+This is the R version assignments of the popular online machine learning course on Coursera website.
 
-One can solve the assignment and pass the quizzes and earn a certificate from [Coursera](https://www.coursera.org/learn/machine-learning). 
+To download lecture videos visit the course website:
+- [Course website](https://www.coursera.org/learn/machine-learning)
+- [The course wiki page](https://share.coursera.org/wiki/index.php/ML:Main)
 
-The code provides the starter code and the infrastructure for carrying out the assignment in R statistical software. The completed assignments are available too, however publishing the solutions is against the course rules and I will remove them in future. If you had any question regarding the assignments, fill free to ask it here using Github issues.
+This repo provides the starter code to solve the assignment in R statistical software. 
+The completed assignments are available too, but they will be removed them in future so feel free to fork. 
 
-To solve the assignments simply fill the parts of the code that is written "YOUR CODE HERE". The assignment instructions in pdf format are also included in this repository. There is an RStudio project file in each exercise folder that is a proper starting point to start coding. Upon the completion, the assignments can be submitted directly from R.
+To solve the assignments simply fill the parts of the code that is written `"YOUR CODE HERE"`. 
 
-The "Solutions" folder has the solutions to the exercises. Note that the `.Rda` or `.txt` data files are not included in this folder.
+## Dependencies
+In order to produce similar results and plots to Octave/Matlab, you should install a few packages:
 
-## Dependencies (3rd party packages)
-I have tried my best not to use 3rd party packages in the starter codes. However to produce similar results and plots to Octave/Matlab I had to use a few packages although they are not many. 
+- `rgl` package is used to produce the 3D scatter plots and surface plots in the exercises.
 
-[rgl](https://cran.r-project.org/package=rgl) package is used to produce the 3D scatter plots and surface plots in the exercises.
+- `lbfgsb3`: There are many optimization tasks within the assignments. Most of them were not large-scale optimization problem and they were optimized using built-in `optim` function of R. However to solve optimization problems in exercise 4 and exercise 8, I have used a slightly modified version of [lbfgsb3](https://cran.r-project.org/package=lbfgsb3) package. One should first install the package and then source the `lbfgsb3_.R`. The sourcing is done in the starter codes automatically. `fmincg` or `fminunc` optimization functions in Octave/Matlab take one function as input that computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions in R individually. So I have separated the cost and gradient functions in the starter codes.
 
-There are many optimization tasks within the assignments. Most of them were not large-scale optimization problem and they were optimized using built-in `optim` function of R. However to solve optimization problems in exercise 4 and exercise 8, I have used a slightly modified version of [lbfgsb3](https://cran.r-project.org/package=lbfgsb3) package. One should first install the package and then source the `lbfgsb3_.R`. The sourcing is done in the starter codes automatically. `fmincg` or `fminunc` optimization functions in Octave/Matlab take one function as input that computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions in R individually. So I have separated the cost and gradient functions in the starter codes.
+- `SnowballC`: `portStemmer` function in this package has the same role of the `portStemmer.m`.
+- 
+- `raster` package is used to produce the plot of the bird in exercise 7.
 
-Stemmer software (portStemmer.m) is used in the exercise 6 (spam classification) and the `portStemmer` function is called from `processEmail` function. Instead of re-implementing `portStemmer` function in R, I have used [SnowballC](https://cran.r-project.org/package=SnowballC) package that produces the same results as with the case of portStemmer.m.
-
-`R.matlab` package was used for reading Octave/Matlab `.mat` datasets. The datasets were converted to `.Rda`  format. Thus you would not need this package to complete the assignments.
-
-`raster` package is used to produce the plot of the bird in exercise 7.
+- `jsonlite` and `httr` packages are needed for submission.
 
 Last but not the least is the Octave/Matlab `pinv` function. There is a `ginv` function in `MASS` package that doesn't produce the same exact result of Octave/Matlab `pinv`. Therefore a slightly modified version of MASS `ginv` is included in the starter codes. `MASS` package is not needed to be installed.
 
-To wrap up, before starting to code make sure the following 4 packages are pre-installed: `rgl`, `lbfgsb3`, `SnowballC` and `raster`.
-
-`install.packages(c('rgl','lbfgsb3','SnowballC','raster'))`
+Before starting to code, install the following packages:
+`install.packages(c('rgl','lbfgsb3','SnowballC','raster','jsonlite', 'httr'))`
 
 ## Submission
-Now it is possible to submit assignments directly from R. So R programmers can take the course too. I submitted all assignments to Coursera for testing and  the scores were 100%.
+After completing each assignment, `source` the `submit.r` and type `submit()` in the R console.
 
-Two more packages namely `httr` for `POST()` function and `jsonlite` for `toJSON()` function are needed to be installed before submission.
-
-`install.packages(c('jsonlite', 'httr'))`
-
-After completing each assignment, in order to submit,  set the working directory to the root folder of the corresponding assignment e.g. `setwd('D:\MachineLearningMOOC\StarterCodes\mlclass-ex1')`. Then `source` the `submit.r` and type `submit()` in the R console.
-
-Try not to use my solutions and submit your own efforts as it is against the course rules. In future, I may remove the solutions from the repository, so the submissions will be all your own efforts.
+I submitted my solutions to Coursera for testing and the scores were 100%. Please report any problem with submission. 
 
 ## Screen-shots
 A few screen-shots of the plots produced in R:
@@ -67,4 +61,4 @@ A few screen-shots of the plots produced in R:
 11. Principal component analysis (PCA)
 12. Anomaly detection, supervised learning
 13. Recommender systems, Collaborative filtering
-14. Large scale machine learning, stochastic and mini-batch gradient descent, online learning, map reduce
+14. Large scale machine learning, stochastic and mini-batch gradient descent, on-line learning, map reduce

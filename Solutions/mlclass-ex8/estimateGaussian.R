@@ -23,7 +23,7 @@ estimateGaussian <- function(X) {
   #
   
   mu <- 1 / m * apply(X,2,sum)
-  sigma2 <- apply(X,2,var) * (m - 1) / m;
+  sigma2 <- apply(X,2,var) * (m - 1) / m
   
   list(mu = mu, sigma2 = sigma2)
   # --------------------------------------------------------------

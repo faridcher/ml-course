@@ -5,7 +5,7 @@ costFunction  <- function(X, y) {
   
   function(theta) {
     # Initialize some useful values
-    m <- length(y); # number of training examples
+    m <- length(y) # number of training examples
     
     # You need to return the following variable correctly
     J <- 0

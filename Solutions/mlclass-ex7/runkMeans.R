@@ -35,7 +35,6 @@ runkMeans  <- function(X, initial_centroids,
       plotProgresskMeans(X, centroids, previous_centroids, idx, K, i)
       cat(sprintf('Press enter to continue.\n'))
       line <- readLines(con = stdin(),1)
-      
     }
     
     # Given the memberships, compute new centroids

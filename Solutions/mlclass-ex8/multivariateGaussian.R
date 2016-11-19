@@ -15,8 +15,13 @@ multivariateGaussian <- function(X, mu, Sigma2) {
     Sigma2 <- diag(Sigma2)
   
   X <- bsxfun('-', X, mu)
-  p <- (2 * pi) ^ (-k / 2) * det(Sigma2) ^ (-0.5) *
-    exp(-0.5 * apply(bsxfun("*", X %*% pinv(Sigma2), X),1, sum))
   
+  p <- (2 * pi) ^ (-k / 2) * det(Sigma2) ^ (-0.5) *
+    exp(-0.5 * apply(
+                     bsxfun("*", X %*% pinv(Sigma2), X)
+                     ,1, sum)
+                    )
+  #simple example
+  #[1 2]*[1 2;1 2]*[1;2]
   p
 }

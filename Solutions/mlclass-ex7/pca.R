@@ -21,7 +21,7 @@ pca <- function(X) {
   #       number of examples).
   #
   
-  Sigma <- (1 / m) * (t(X) %*% X)
+  Sigma <- (1 / m) * (t(X) %*% X) #covariance matrix
   USV <- svd(Sigma)
   
   USV

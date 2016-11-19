@@ -12,11 +12,14 @@ trainLinearReg <- function(X, y, lambda) {
   
   initial_theta <- rep(0,dim(X)[2])
   
+  # pars <- lbfgsb3_(initial_theta, fn= linearRegCostFunction(X,y,lambda), gr=linearRegGradFunction(X,y,lambda),
+  #          control = list(trace=1,maxit=200))$prm
+  
   optimRes <-
     optim(
       par = initial_theta, fn = linearRegCostFunction(X,y,lambda), gr = linearRegGradFunction(X,y,lambda),
       method = "BFGS"
     )
-  
+
   optimRes$par
 }

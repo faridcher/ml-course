@@ -4,7 +4,7 @@ costFunctionReg  <- function(X, y, lambda) {
   #   theta as the parameter for regularized logistic regression
   function(theta)  {
     # Initialize some useful values
-    m <- length(y); # number of training examples
+    m <- length(y) # number of training examples
     
     # You need to return the following variables correctly
     J <- 0

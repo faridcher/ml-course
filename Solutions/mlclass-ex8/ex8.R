@@ -134,6 +134,3 @@ cat(sprintf('Best F1 on Cross Validation Set:  %f\n', F1))
 cat(sprintf('# Outliers found: %d\n', sum(p < epsilon)))
 cat(sprintf('   (you should see a value epsilon of about 1.38e-18)\n\n'))
 line <- readLines(con = stdin(),1)
-
-
-

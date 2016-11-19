@@ -132,7 +132,7 @@ A <- A / 255 # Divide by 255 so that all values are in the range 0 - 1
 # Size of the image
 img_size <- dim(A)
 
-# Reshape the image into an Nx3 matrix where N <- number of pixels.
+# Reshape the image into an Nx3 matrix where N = number of pixels.
 # Each row will contain the Red, Green and Blue pixel values
 # This gives us our dataset matrix X that we will use K-Means on.
 X <- matrix(A, img_size[1] * img_size[2], 3)
@@ -146,6 +146,7 @@ max_iters <- 10
 # randomly.
 # You should complete the code in kMeansInitCentroids.R before proceeding
 initial_centroids <- kMeansInitCentroids(X, K)
+
 
 # Run K-Means
 kMean <- runkMeans(X, initial_centroids, max_iters)
@@ -174,20 +175,18 @@ idx <- findClosestCentroids(X, centroids)
 X_recovered <- centroids[idx,]
 
 # Reshape the recovered image into proper dimensions
-X_recovered <- array(X_recovered, img_size)
+X_recovered <- array(X_recovered, img_size) #3 dimensional array
 
 # Display the original image
 op <- par(mfrow=c(1,2),mar=c(5, 4, 4, 2) + .1)
 
 library(raster)
 b <- brick(A)
-plotRGB(b,stretch='lin',asp=2,axes=TRUE,
-        main="Original")
+plotRGB(b,stretch='lin',asp=2 ,axes=TRUE, main="Original")
 
 # Display compressed image side by side
 b <- brick(X_recovered)
-plotRGB(b,stretch='lin',asp=2,axes=TRUE, 
-        main=sprintf('Compressed,\n with %d colors.', K))
+plotRGB(b,stretch='lin',asp=2,axes=TRUE, main=sprintf('Compressed,\n with %d colors.', K))
 
 par(op)
 

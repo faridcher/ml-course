@@ -75,6 +75,7 @@ lbfgsb3_ <- function (prm, fn, gr = NULL, lower = -Inf, upper = Inf, control = l
           " ")
       print(task)
     }
+    possibleError <- tryCatch(
     result <- .Fortran("lbfgsb3", n = as.integer(n), m = as.integer(m), 
                        x = as.double(prm), l = as.double(lower), u = as.double(upper), 
                        nbd = as.integer(nbd), f = as.double(f), g = as.double(g), 
@@ -83,6 +84,12 @@ lbfgsb3_ <- function (prm, fn, gr = NULL, lower = -Inf, upper = Inf, control = l
                        iprint = as.integer(iprint), icsave = as.integer(icsave), 
                        lsave = as.logical(lsave), isave = as.integer(isave), 
                        dsave = as.double(dsave))
+    , error = function(e) e)
+    
+    if(inherits(possibleError, "error"))
+      break
+    
+    
     itask <- result$itask
     icsave <- result$icsave
     prm <- result$x

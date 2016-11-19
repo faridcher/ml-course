@@ -15,8 +15,7 @@ plotDecisionBoundary <-
     
     if (dim(X)[2] <= 3)
     {
-      # Only need 2 points to define a line, so choose two }points
-      #plot_x <- [min(X(:,2))-2,  max(X(:,2))+2]
+      # Only need 2 points to define a line, so choose two end points
       plot_x <- cbind(min(X[,2] - 2), max(X[,2] + 2))
       # Calculate the decision boundary line
       plot_y <- -1 / theta[3] * (theta[2] * plot_x + theta[1])
@@ -40,8 +39,7 @@ plotDecisionBoundary <-
       # Notice you need to specify the range [0, 0]
       contour(
         u, v, z, xlab = 'Microchip Test 1', ylab = 'Microchip Test 2',
-        levels = 0,
-        lwd = 2, add = TRUE, drawlabels = FALSE, col = "green"
+        levels = 0, lwd = 2, add = TRUE, drawlabels = FALSE, col = "green"
       )
       mtext(paste("lambda = ",lambda), 3)
     }
