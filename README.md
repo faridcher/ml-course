@@ -35,7 +35,7 @@ Beware that `fmincg`/`fminunc` optimization functions in Matlab takes one functi
 Before starting to code, install the following packages:
 `install.packages(c('rgl','lbfgsb3','SnowballC','raster','jsonlite', 'httr'))`
 
-Note that you don't have to do anything mentioned above, just be informed.
+Note that you don't have to do anything with what is mentioned above, just be informed.
 
 ## Submission
 After completing each assignment, `source` the `submit.r` and type `submit()` in the R console.
