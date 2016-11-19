@@ -9,6 +9,7 @@ To download lecture videos visit the course website:
 This repo provides the starter code to solve the assignment in R statistical software; the completed assignments are available in the Solutions folder.
 
 Do these steps to complete the assignments:
+
 1. View the lectures 
 2. Read the instructions (pdf)
 3. Use the **Starter** folder and fill the parts of the code that is written `"YOUR CODE HERE"`
