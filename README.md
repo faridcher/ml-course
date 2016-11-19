@@ -19,7 +19,7 @@ In order to produce similar results and plots to Octave/Matlab, you should insta
 - `lbfgsb3`: There are many optimization tasks within the assignments. Most of them were not large-scale optimization problem and they were optimized using built-in `optim` function of R. However to solve optimization problems in exercise 4 and exercise 8, I have used a slightly modified version of [lbfgsb3](https://cran.r-project.org/package=lbfgsb3) package. One should first install the package and then source the `lbfgsb3_.R`. The sourcing is done in the starter codes automatically. `fmincg` or `fminunc` optimization functions in Octave/Matlab take one function as input that computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions in R individually. So I have separated the cost and gradient functions in the starter codes.
 
 - `SnowballC`: `portStemmer` function in this package has the same role of the `portStemmer.m`.
-- 
+ 
 - `raster` package is used to produce the plot of the bird in exercise 7.
 
 - `jsonlite` and `httr` packages are needed for submission.
