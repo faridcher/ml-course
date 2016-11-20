@@ -6,14 +6,14 @@ To download lecture videos visit the course website:
 - [Course website](https://www.coursera.org/learn/machine-learning)
 - [The course wiki page](https://share.coursera.org/wiki/index.php/ML:Main)
 
-This repo provides the starter code to solve the assignment in R statistical software; the completed assignments are available in the Solutions folder.
+This repo provides the starter code to solve the assignment in R statistical software; the completed assignments are available in the `Solutions` folder.
 
 Do these steps to complete the assignments:
 
 1. View the lectures 
 2. Read the instructions (pdf)
 3. Use the **Starter** folder and fill the parts of the code that is written `"YOUR CODE HERE"`
-4. If you couldn't solve yourself, get help from the **Solutions** folder
+4. If you couldn't solve yourself, get help from the `Solutions` folder
 5. Submit
 
 ## Dependencies
@@ -42,19 +42,6 @@ After completing each assignment, `source` the `submit.r` and type `submit()` in
 
 I submitted the solutions to Coursera for testing and the scores were 100%. Please report any problem with submission. 
 
-## Screen-shots
-A few screen-shots of the plots produced in R:
-
-![Anomaly Detection](http://faridcher.github.io/uploads/ml-course/Snapshots/AnomolyDetection.png)
-![Gradient Descent Convergence](http://faridcher.github.io/uploads/ml-course/Snapshots/GradientDescent_Convergence.PNG)
-![K-Means Clustering](http://faridcher.github.io/uploads/ml-course/Snapshots/K-Means_Clustering.png)
-![K-Means Raster Compress](http://faridcher.github.io/uploads/ml-course/Snapshots/K-Means_CompressImage.png)
-![Learning Curves](http://faridcher.github.io/uploads/ml-course/Snapshots/Learning Curve.png)
-![PCA Face Dataset](http://faridcher.github.io/uploads/ml-course/Snapshots/PCA_FaceDataset.png)
-![SVM RBF Kernel](http://faridcher.github.io/uploads/ml-course/Snapshots/SVM_RBF_Kernel.png)
-![Multiple Regression](http://faridcher.github.io/uploads/ml-course/Snapshots/GradientDescent_multiple-regression.PNG)
-![PCA Pixel Dataset Centroids](http://faridcher.github.io/uploads/ml-course/Snapshots/PCA_PixelDataset_Centroid.PNG)
-
 ## Topics covered in the course and assignments
 1. Linear regression, cost function and normalization
 2. Gradient descent and advanced optimization
@@ -70,3 +57,16 @@ A few screen-shots of the plots produced in R:
 12. Anomaly detection, supervised learning
 13. Recommender systems, Collaborative filtering
 14. Large scale machine learning, stochastic and mini-batch gradient descent, on-line learning, map reduce
+
+## Screen-shots
+A few screen-shots of the plots produced in R:
+
+![Anomaly Detection](http://faridcher.github.io/uploads/ml-course/Snapshots/AnomolyDetection.png)
+![Gradient Descent Convergence](http://faridcher.github.io/uploads/ml-course/Snapshots/GradientDescent_Convergence.PNG)
+![K-Means Clustering](http://faridcher.github.io/uploads/ml-course/Snapshots/K-Means_Clustering.png)
+![K-Means Raster Compress](http://faridcher.github.io/uploads/ml-course/Snapshots/K-Means_CompressImage.png)
+![Learning Curves](http://faridcher.github.io/uploads/ml-course/Snapshots/Learning Curve.png)
+![PCA Face Dataset](http://faridcher.github.io/uploads/ml-course/Snapshots/PCA_FaceDataset.png)
+![SVM RBF Kernel](http://faridcher.github.io/uploads/ml-course/Snapshots/SVM_RBF_Kernel.png)
+![Multiple Regression](http://faridcher.github.io/uploads/ml-course/Snapshots/GradientDescent_multiple-regression.PNG)
+![PCA Pixel Dataset Centroids](http://faridcher.github.io/uploads/ml-course/Snapshots/PCA_PixelDataset_Centroid.PNG)
