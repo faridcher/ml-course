@@ -29,7 +29,7 @@ In order to produce similar results and plots to Octave/Matlab, you should insta
 
 - `pinv.R`: The `ginv` function, generalized inverse, in `MASS` package doesn't produce the same exact result of the Matlab `pinv` (pseudo-inverse). `pinv.R` is the modified version of MASS `ginv` to produce the same effect of the MATLAB `pinv`. For more info see [the stackoverflow discussion](http://stackoverflow.com/questions/36391548/r-ginv-and-matlab-pinv-produce-different-results)
 
-- `lbfgsb3_.R`: Certain optimization tasks could only be solved using `lbfgsb3` package, yet there are a few bugs in this packages. The purpose of `lbfgsb3_.R` is to address these bugs, which is used for exercise 4 and 8.
+- `lbfgsb3_.R`: Certain optimization tasks could only be solved using `lbfgsb3` package, yet there are a few bugs in this package. The purpose of `lbfgsb3_.R` is to address these bugs; it is used for exercises 4 and 8.
 Beware that `fmincg`/`fminunc` optimization functions in Matlab takes one function as input and computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions individually.
 
 Before starting to code, install the following packages:
