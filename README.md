@@ -65,7 +65,7 @@ A few screen-shots of the plots produced in R:
 ![Gradient Descent Convergence](http://faridcher.github.io/uploads/ml-course/Snapshots/GradientDescent_Convergence.PNG)
 ![K-Means Clustering](http://faridcher.github.io/uploads/ml-course/Snapshots/K-Means_Clustering.png)
 ![K-Means Raster Compress](http://faridcher.github.io/uploads/ml-course/Snapshots/K-Means_CompressImage.png)
-![Learning Curves](http://faridcher.github.io/uploads/ml-course/Snapshots/Learning Curve.png)
+![Learning Curves](http://faridcher.github.io/uploads/ml-course/Snapshots/Learning%20Curve.png)
 ![PCA Face Dataset](http://faridcher.github.io/uploads/ml-course/Snapshots/PCA_FaceDataset.png)
 ![SVM RBF Kernel](http://faridcher.github.io/uploads/ml-course/Snapshots/SVM_RBF_Kernel.png)
 ![Multiple Regression](http://faridcher.github.io/uploads/ml-course/Snapshots/GradientDescent_multiple-regression.PNG)
