@@ -2,7 +2,7 @@
 
 This is the R version assignments of the online machine learning course (MOOC) on Coursera website by Prof. Andrew Ng.
 
-To download lecture videos visit the course website:
+To view/download the lecture videos and slides visit the course website:
 - [Course website](https://www.coursera.org/learn/machine-learning)
 - [The course wiki page](https://share.coursera.org/wiki/index.php/ML:Main)
 
@@ -13,7 +13,7 @@ Simply follow these steps to complete the assignments:
 1. View the lectures videos and handouts.
 2. Instructions are basically for MATLAB/OCTAVE. R compatible version of instructions will become available here as [Wiki](https://github.com/faridcher/machine-learning-course/wiki) pages in future.
 3. Use the **starter** folder and fill the parts of the code that is written "YOUR CODE HERE"
-4. If you couldn't solve it yourself, get help from the accompanied file suffixed by `_solution` inside the same folder of the starter code. For example, `starter/ex1/computeCost.R` has an associated solution file named `starter/ex1/computeCost_solution.R`
+4. If you couldn't solve it by yourself, get help from the accompanied file suffixed by `_solution` inside the same folder of the starter code. For example, `starter/ex1/computeCost.R` has an associated solution file named `starter/ex1/computeCost_solution.R`
 5. Submit
 
 ## Dependencies
@@ -27,7 +27,7 @@ In order to produce similar results and plots to Octave/Matlab, you should insta
 
 - `jsonlite` and `httr` packages are needed for submission.
 
-- `pinv.R`: The `ginv` function, generalized inverse, in `MASS` package doesn't produce the same result of the Matlab `pinv` (pseudo-inverse). `pinv.R` is the modified version of MASS `ginv` to produce the same effect of the MATLAB `pinv`. For more info see [the stackoverflow discussion](http://stackoverflow.com/questions/36391548/r-ginv-and-matlab-pinv-produce-different-results)
+- `pinv.R`: The `ginv` function, generalized inverse, in `MASS` package doesn't produce the same result of the Matlab `pinv` (pseudo-inverse). `pinv.R` is the modified version of MASS `ginv` to produce the same effect of the MATLAB `pinv`. For more info see [this stackoverflow discussion](http://stackoverflow.com/questions/36391548/r-ginv-and-matlab-pinv-produce-different-results)
 
 - `lbfgsb3_.R`: Certain optimization tasks could only be solved using `lbfgsb3` package, yet there are a few bugs in this package. The purpose of `lbfgsb3_.R` is to address these bugs; it is used for exercises 4 and 8.
 Beware that `fmincg` or `fminunc` optimization function in Matlab takes one function as input and computes cost and gradient simultaneously. However, cost and gradient functions MUST be supplied into `optim` or `lbfgsb3` functions individually.
@@ -35,7 +35,7 @@ Beware that `fmincg` or `fminunc` optimization function in Matlab takes one func
 Before starting to code, install the following packages:
 `install.packages(c('rgl','lbfgsb3','SnowballC','raster','jsonlite', 'httr'))`
 
-Note that you don't have to do anything with what is mentioned above, just be informed.
+You are welcome to star this repo if you find it useful.
 
 ## Submission
 After completing each assignment, `source("submit.r")`  and then `submit()` in your R console.
