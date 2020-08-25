@@ -5,7 +5,7 @@ kMeansInitCentroids  <- function(X, K) {
   #   used with the K-Means on the dataset X
   #
   
-  # You should return this values correctly
+  # You should return these values correctly
   centroids <- matrix(0,K,dim(X)[2])
   
   # ----------------------- YOUR CODE HERE -----------------------
@@ -13,6 +13,10 @@ kMeansInitCentroids  <- function(X, K) {
   #               the dataset X
   #
   
+  # Randomly reorder the indices of examples
+  randidx <- sample(dim(X)[1])
+  # Take the first K examples as centroids
+  centroids <- X[randidx[1:K],]
   centroids
   # --------------------------------------------------------------
   

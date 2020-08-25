@@ -42,7 +42,7 @@ list2env(data,.GlobalEnv)
 rm(data)
 
 # Select an initial set of centroids
-K <- 3; # 3 Centroids
+K <- 3 # 3 Centroids
 initial_centroids <- matrix(c(3, 3, 6, 2, 8, 5),3,2,byrow = TRUE)
 
 # Find the closest centroids for the examples using the

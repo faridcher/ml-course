@@ -62,7 +62,7 @@ line <- readLines(con = stdin(),1)
 #
 cat(sprintf('\nComputing centroids means.\n\n'))
 
-#  Compute means based on the closest centroids found in the previous part.
+# Compute means based on the closest centroids found in the previous part.
 centroids <- computeCentroids(X, idx, K)
 
 cat(sprintf('Centroids computed after initial finding of closest centroids: \n'))
