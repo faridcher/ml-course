@@ -62,7 +62,7 @@ cat('Running Gradient Descent ...\n')
 X <- cbind(rep(1,m),X) # Add a column of ones to x
 X <- as.matrix(X)
 # initialize fitting parameters
-theta <- c(8,3)
+theta <- c(0,0)
 
 # Some gradient descent settings
 iterations <- 1500
