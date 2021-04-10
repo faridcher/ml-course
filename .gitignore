@@ -4,7 +4,7 @@
 token.rda
 builtin/
 wiki/
-Notes/
-instruction_*/
+instructions_*/
+instructions.md
 *.html
 *.Rmd
