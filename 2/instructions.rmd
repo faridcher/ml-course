@@ -1,0 +1,440 @@
+---
+title: "Programming Exercise 2: Logistic Regression"
+author: ""
+date: "Dec 21, 2020"
+output: 
+    html_document:
+        toc: true
+        mathjax: local
+        self_contained: FALSE
+---
+
+```{r opt, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, cache=TRUE, fig.align="center")
+sources <- c("costFunction.r","sigmoid.r","plotData.r",
+             "plotDecisionBoundary.r","mapFeature.r",
+             "predict.r","costFunctionReg.r")
+sources <- paste0(substr(sources, 1, nchar(sources)-2), '-solution.r')
+invisible(lapply(sources, source))
+```
+
+This programming exercise instruction was originally developed and written by Prof. Andrew
+Ng as part of his machine learning [course](https://www.coursera.org/learn/machine-learning) on Coursera platform. I have adapted
+the instruction for R language, so that its users, including myself, could also take and benefit from the course.
+
+## Introduction
+
+In this exercise, you will implement logistic regression and apply it to two
+different datasets. Before starting on the programming exercise, we strongly
+recommend watching the video lectures and completing the review questions
+for the associated topics.
+To get started with the exercise, you will need to download the starter
+code and unzip its contents to the directory where you wish to complete the
+exercise. If needed, use the `setwd()` command in R to change to this directory before starting this exercise.
+
+Files included in this exercise:\
+
+- `ex2.r` - R script that steps you through the exercise
+- `ex2_reg.r` - R script for the later parts of the exercise
+- `ex2data1.txt` - Training set for the first half of the exercise
+- `ex2data2.txt` - Training set for the second half of the exercise
+- `submit.r` - Submission script that sends your solutions to our servers
+- `mapFeature.r` - Function to generate polynomial features
+- `plotDecisionBoundary.r` - Function to plot classifier's decision boundary
+- ⋆ `plotData.r` - Function to plot 2D classification data
+- ⋆ `sigmoid.r` - Sigmoid Function
+- ⋆ `costFunction.r` - Logistic Regression Cost Function
+- ⋆ `predict.r` - Logistic Regression Prediction Function
+- ⋆ `costFunctionReg.r` - Regularized Logistic Regression Cost
+
+⋆ indicates files you will need to complete
+
+Throughout the exercise, you will be using the scripts `ex2.r` and `ex2_reg.r`.
+These scripts set up the dataset for the problems and make calls to functions
+that you will write. You do not need to modify either of them. You are only
+required to modify functions in other files, by following the instructions in
+this assignment.
+
+### Where to get help
+The exercises in this course use R, a high-level programming language
+well-suited for numerical computations. If you do not have R installed, please
+download a Windows installer from [R-project](https://cran.r-project.org/bin/windows/base/) website. [R-Studio](https://rstudio.com/products/rstudio/download/) is a free and open-source R integrated development environment (IDE) making R script development a bit easier when compared to the R's own basic GUI. You may start from the `.rproj` (a R-Studio project file) in each exercise directory. 
+At the R command line, typing help followed by a
+function name displays documentation for that function. For example,
+`help('plot')` or simply `?plot` will bring up help information for plotting.
+Further documentation for R functions can be found at the R documentation pages. 
+
+## 1 Logistic Regression
+In this part of the exercise, you will build a logistic regression model to
+predict whether a student gets admitted into a university.
+Suppose that you are the administrator of a university department and
+you want to determine each applicant's chance of admission based on their
+results on two exams.
+You have historical data from previous applicants
+that you can use as a training set for logistic regression. For each training
+example, you have the applicant's scores on two exams and the admissions
+decision.
+Your task is to build a classification model that estimates an applicant's
+probability of admission based on the scores from those two exams. This outline
+and the framework code in `ex2.r` will guide you through the exercise.
+
+### 1.1 Visualizing the data
+Before starting to implement any learning algorithm, it is always good to
+visualize the data if possible. In the first part of `ex2.r`, the code will load the
+data and display it on a 2-dimensional plot by calling the function `plotData`.
+You will now complete the code in `plotData` so that it displays a figure
+like Figure 1, where the axes are the two exam scores, and the positive and
+negative examples are shown with different markers.
+
+```{r , fig.cap='Figure 1: Scatter plot of training data', echo=FALSE}
+par(mar=c(4,4,1,1))
+data <- read.table('ex2data1.txt', sep = ',')
+X <- data[,c(1,2)]; y <- data[,3]
+X <- as.matrix(X)
+plotData(X, y)
+```
+
+To help you get more familiar with plotting, we have left `plotData.r`
+empty so you can try to implement it yourself. However, this is an optional
+(ungraded) exercise. We also provide our implementation below so you can
+copy it or refer to it. If you choose to copy our example, make sure you learn
+what each of its commands is doing by consulting the R documentation.
+
+```{r, eval=F}
+# plus and empty circle character codes
+symbols <- c(3,21) 
+yfac <- factor(y)
+plot(X[,1], X[,2], pch = symbols[yfac], 
+     bg = "yellow", lwd = 1.3, xlab = axLables[1], ylab = axLables[2])
+legend("topright", legLabels, pch = rev(symbols), pt.bg = "yellow")
+```
+
+### 1.2 Implementation
+
+#### 1.2.1 Warmup exercise: sigmoid function
+Before you start with the actual cost function, recall that the logistic regression hypothesis is defined as:
+
+$$ h_\theta(x)=g(\theta^Tx),$$
+
+where function $g$ is the sigmoid function. The sigmoid function is defined as:
+
+$$ g(z)=\frac{1}{1+e^{-z}}.$$
+
+Your first step is to implement this function in `sigmoid.r` so it can be
+called by the rest of your program. When you are finished, try testing a few
+values by calling `sigmoid(x)` at the R command line. For
+large positive values of x, the sigmoid should be close to 1, while for large
+negative values, the sigmoid should be close to 0. Evaluating `sigmoid(0)`
+should give you exactly 0.5. Your code should also work with vectors and
+matrices. For a matrix, your function should perform the sigmoid function on every element.
+You can submit your solution for grading by typing `submit()` at the R command line. The submission script will prompt you for
+your login e-mail and submission token and ask you which files you want
+to submit. You can obtain a submission token from the web page for the assignment.
+
+*You should now submit your solutions.*
+
+### 1.2.2 Cost function and gradient
+Now you will implement the cost function and gradient for logistic regression.
+Complete the code in `costFunction.r` to return the cost and gradient.
+Recall that the cost function in logistic regression is
+
+$$J(\theta)=\frac{1}{m}\sum_{i=1}^m [-y^{(i)}log(h_\theta(x^{(i)})) - (1-y^{(i)}) log(1-h_\theta(x^{(i)})) ],$$
+
+and the gradient of the cost is a vector of the same length as $\theta$ where
+the $j^{th}$ element (for $j = 0, 1, . . . , n$) is defined as follows:
+
+$$ \frac{\partial J(\theta)}{\partial \theta_j} = \frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} $$
+
+Note that while this gradient looks identical to the linear regression
+gradient, the formula is actually different because linear and logistic
+regression have different definitions of $h_\theta(x)$.
+Once you are done, `ex2.r` will call your `costFunction` using the initial
+parameters of $\theta$. You should see that the cost is about 0.693.
+
+*You should now submit your solutions.*
+
+#### 1.2.3 Learning parameters using optim [^0]
+In the previous assignment, you found the optimal parameters of a linear regression model by implementing gradent descent. You wrote a cost function
+and calculated its gradient, then took a gradient descent step accordingly.
+This time, instead of taking gradient descent steps, you will use an R built-in function called `optim`.
+R's `optim` is an optimization solver that finds the minimum of an unconstrained [^1] function. For logistic regression, you want to
+optimize the cost function $J(\theta)$ with parameters $\theta$.
+Concretely, you are going to use `optim` to find the best parameters $\theta$
+for the logistic regression cost function, given a fixed dataset (of X and y values). You will pass to `optim` the following inputs:
+ 
+[^0]: Beware that `fmincg` or `fminunc` optimization function in MATLAB takes one function as input and computes cost and gradient simultaneously. However, cost and gradient functions must be supplied into `optim` or `lbfgsb3` functions individually.
+
+[^1]: Constraints in optimization often refer to constraints on the parameters, for example,
+constraints that bound the possible values $\theta$ can take (e.g., $\theta\leq 1$). Logistic regression
+does not have such constraints since $\theta$ is allowed to take any real value.
+
+- The initial values of the parameters we are trying to optimize.
+- Two functions that, when given the training set and a particular $\theta$, computes the logistic regression cost and gradient respectively with respect to $\theta$ for the dataset (X, y)
+
+In `ex2.r`, we already have code written to call `optim` with the correct arguments.
+
+```{r, eval=F}
+optimRes <- optim(par = initial_theta, fn = costFunction(X,y), gr = grad(X,y), 
+      method="BFGS", control = list(maxit = 400))
+theta <- optimRes$par
+cost <- optimRes$value
+```
+
+In this code snippet, we first defined the options to be used with `optim`.
+Specifically, we set the `gr` parameter to a function to tell `optim` to use the gradient when minimizing the function. If it is unset, `optim` uses a finite difference approximation to compute gradient.
+Method BFGS is a quasi-Newton method (also known as a variable metric
+algorithm). This uses both the function values and gradients to build up a
+picture of the surface to be optimized.
+Furthermore, we set the `maxit` option to 400, so that `optim` will run for at most 400 steps before
+it terminates.
+
+If you have completed the `costFunction` correctly, `optim` will converge
+on the right optimization parameters and return the final values of the cost
+and $\theta$. Notice that by using `optim`, you did not have to write any loops
+yourself, or set a learning rate like you did for gradient descent. This is all
+done by `optim`: you only needed to provide a function calculating the cost
+and another function for the gradient.
+
+Once `optim` completes, `ex2.r` will call your `costFunction` function
+using the optimal parameters of $\theta$. You should see that the cost is about 0.203.
+This final $\theta$ value will then be used to plot the decision boundary on the
+training data, resulting in a figure similar to Figure 2. We also encourage
+you to look at the code in `plotDecisionBoundary.r` to see how to plot such
+a boundary using the $\theta$ values.
+
+#### 1.2.4 Evaluating logistic regression
+After learning the parameters, you can use the model to predict whether a
+particular student will be admitted. For a student with an Exam 1 score
+of 45 and an Exam 2 score of 85, you should expect to see an admission
+probability of 0.776.
+Another way to evaluate the quality of the parameters we have found
+is to see how well the learned model predicts on our training set. 
+
+```{r, fig.cap="Figure 2: Training data with decision boundary", echo=FALSE}
+par(mar=c(4,4,1,1))
+#  Setup the data matrix appropriately, and add ones for the intercept term
+m <- dim(X)[1]
+n <- dim(X)[2]
+
+# Add intercept term to x and X_test
+X <- cbind(rep(1,m),X)
+# Initialize fitting parameters
+initial_theta <- rep(0,n+1)
+
+# Compute and display initial cost and gradient
+cF <- costFunction(X, y)(initial_theta)
+cost <- costFunction(X, y)(initial_theta)
+grd <- grad(X,y)(initial_theta)
+
+optimRes <- optim(par = initial_theta, fn = costFunction(X,y), gr = grad(X,y), 
+      method="BFGS", control = list(maxit = 400))
+theta <- optimRes$par
+cost <- optimRes$value
+
+# Plot Boundary
+plotDecisionBoundary(theta, X, y)
+```
+
+In this part, your task is to complete the code in `predict.r`. The `predict` function
+will produce 1 or 0 predictions given a dataset and a learned parameter
+vector $\theta$.
+After you have completed the code in `predict.r`, the `ex2.r` script will
+proceed to report the training accuracy of your classifier by computing the
+percentage of examples it got correct.
+
+*You should now submit your solutions.*
+
+## 2 Regularized logistic regression
+In this part of the exercise, you will implement regularized logistic regression
+to predict whether microchips from a fabrication plant passes quality assurance (QA). 
+During QA, each microchip goes through various tests to ensure it is functioning correctly.
+Suppose you are the product manager of the factory and you have the
+test results for some microchips on two different tests. From these two tests,
+you would like to determine whether the microchips should be accepted or
+rejected. To help you make the decision, you have a dataset of test results
+on past microchips, from which you can build a logistic regression model.
+
+You will use another script, `ex2_reg.r` to complete this portion of the exercise.
+
+### 2.1 Visualizing the data
+Similar to the previous parts of this exercise, `plotData` is used to generate a
+figure like Figure 3, where the axes are the two test scores, and the positive
+(y = 1, accepted) and negative (y = 0, rejected) examples are shown with
+different markers.
+
+```{r, fig.cap="Figure 3: Plot of training data", echo=F}
+par(mar=c(4,4,1,1))
+data <- read.table('ex2data2.txt', sep = ',')
+X <- data[,c(1,2)]; y <- data[,3]
+X <- as.matrix(X)
+
+plotData(X, y, axLables = c('Microchip Test 1','Microchip Test 2'),
+         legLabels = c("y = 1","y = 0"))
+```
+
+Figure 3 shows that our dataset cannot be separated into positive and
+negative examples by a straight-line through the plot. Therefore, a
+straightforward application of logistic regression will not perform well on
+this dataset since logistic regression will only be able to find a linear
+decision boundary.
+
+### 2.2 Feature mapping
+
+One way to fit the data better is to create more features from each data
+point. In the provided function `mapFeature.r`, we will map the features into
+all polynomial terms of $x_1$ and $x_2$ up to the sixth power.
+
+$$ 
+mapFeature(x) = \left[
+\begin{array}{c}
+1 \\
+x_1 \\
+x_2 \\
+x_1^2 \\
+x_1x_2 \\
+x_2^2 \\
+x_1^3 \\
+\vdots \\
+x_1x_2^5 \\
+x_2^6
+\end{array}
+\right]
+$$
+
+As a result of this mapping, our vector of two features (the scores on two QA
+tests) has been transformed into a 28-dimensional vector. A logistic regression
+classifier trained on this higher-dimension feature vector will have
+a more complex decision boundary and will appear nonlinear when drawn in
+our 2-dimensional plot.
+While the feature mapping allows us to build a more expressive classifier,
+it is also more susceptible to overfitting. In the next parts of the exercise, you
+will implement regularized logistic regression to fit the data and also see for
+yourself how regularization can help combat the overfitting problem.
+
+### 2.3 Cost function and gradient
+
+Now you will implement code to compute the cost function and gradient for
+regularized logistic regression. Complete the code in `costFunctionReg.r` to
+return the cost and gradient. Recall that the regularized cost function in logistic regression is
+
+$$
+J(\theta)=\frac{1}{m}\sum_{i=1}^m [-y^{(i)} log(h_\theta(x^{(i)})) - 
+(1-y^{(i)}) log(1-h_\theta(x^{(i)})) ] +
+\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2.
+$$
+
+Note that you should not regularize the parameter $\theta_0$. In R, recall that
+indexing starts from 1, hence, you should not be regularizing the `theta[1]`
+parameter (which corresponds to $\theta_0$) in the code. The gradient
+of the cost function is a vector where the $j^{th}$ element is defined as follows:
+
+<center>
+$\displaystyle \frac{\partial J(\theta)}{\partial \theta_0} = \frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \qquad$  for $j=0$
+
+$\displaystyle \frac{\partial J(\theta)}{\partial \theta_j} = \left (\frac{1}{m}\sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \qquad$ for $j \geq 1$
+</center>
+
+Once you are done, `ex2_reg.r` will call your `costFunctionReg` function using the initial value of $\theta$ (initialized to all zeros). You should see that the cost is about 0.693.
+
+*You should now submit your solutions.*
+
+#### 2.3.1 Learning parameters using `optim`
+
+Similar to the previous parts, you will use `optim` to learn the optimal
+parameters $\theta$. If you have completed the cost and gradient for regularized
+logistic regression (`costFunctionReg.r`) correctly, you should be able to step
+through the next part of `ex2_reg.r` to learn the parameters $\theta$ using `optim`.
+
+### 2.4 Plotting the decision boundary
+
+To help you visualize the model learned by this classifier, we have provided 
+the function `plotDecisionBoundary.r` which plots the (non-linear)
+decision boundary that separates the positive and negative examples.
+In `plotDecisionBoundary.r`, we plot the non-linear decision boundary by 
+computing the classifier's predictions on an evenly spaced grid and then drew
+a contour plot of where the predictions change from $y = 0$ to $y = 1$.
+After learning the parameters $\theta$, the next step in the `ex2_reg.r` will plot a
+decision boundary similar to Figure 4.
+
+### 2.5 Optional (ungraded) exercises
+
+In this part of the exercise, you will get to try out different regularization
+parameters for the dataset to understand how regularization prevents overfitting.
+Notice the changes in the decision boundary as you vary $\lambda$. With a small
+$\lambda$, you should find that the classifier gets almost every training example
+correct, but draws a very complicated boundary, thus overfitting the data
+(Figure 5). This is not a good decision boundary: for example, it predicts
+that a point at x = (−0.25, 1.5) is accepted (y = 1), which seems to be an
+incorrect decision given the training set.
+With a larger $\lambda$, you should see a plot that shows a simpler decision
+boundary which still separates the positives and negatives fairly well. However,
+if $\lambda$ is set to too high a value, you will not get a good fit and the decision
+boundary will not follow the data so well, thus underfitting the data (Figure 6).
+
+You do not need to submit any solutions for these optional (ungraded) exercises.
+
+```{r, fig.cap="Figure 4: Training data with decision boundary ($\lambda = 1$)", echo=FALSE}
+par(mar=c(4,4,1,1))
+X <- mapFeature(X[,1], X[,2])
+
+initial_theta <- rep(0,dim(X)[2])
+lambda <- 1
+optimRes <- optim(par = initial_theta, 
+                  fn = costFunctionReg(X,y,lambda), 
+                  gr = gradReg(X,y,lambda), 
+                  method="BFGS", 
+                  control = list(maxit = 400))
+
+theta <- optimRes$par
+J <- optimRes$value
+plotDecisionBoundary(theta, X, y, axLables = c('Microchip Test 1','Microchip Test 2'),
+                     legLabels = c("y = 1","y = 0"))
+```
+
+```{r, fig.cap="Figure 5: No regularization (Overfitting) ($\lambda= 0$)", echo=FALSE}
+par(mar=c(4,4,1,1))
+lambda <- 0
+optimRes <- optim(par = initial_theta, 
+                  fn = costFunctionReg(X,y,lambda), 
+                  gr = gradReg(X,y,lambda), 
+                  method="BFGS", 
+                  control = list(maxit = 400))
+
+theta <- optimRes$par
+J <- optimRes$value
+plotDecisionBoundary(theta, X, y, axLables = c('Microchip Test 1','Microchip Test 2'),
+                     legLabels = c("y = 1","y = 0"))
+```
+
+```{r, fig.cap="Figure 6: Too much regularization (Underfitting) ($\lambda=100$)", echo=FALSE}
+par(mar=c(4,4,1,1))
+lambda <- 100
+optimRes <- optim(par = initial_theta, 
+                  fn = costFunctionReg(X,y,lambda), 
+                  gr = gradReg(X,y,lambda), 
+                  method="BFGS", 
+                  control = list(maxit = 400))
+
+theta <- optimRes$par
+J <- optimRes$value
+plotDecisionBoundary(theta, X, y, axLables = c('Microchip Test 1','Microchip Test 2'),
+                     legLabels = c("y = 1","y = 0"))
+```
+
+## Submission and Grading
+
+After completing various parts of the assignment, be sure to use the submit
+function system to submit your solutions to our servers. The following is a
+breakdown of how each part of this exercise is scored.
+
+| Part                                 | Submitted File      | Points     |
+| :-------------                              | :----                     | :--------: |
+| Sigmoid Function                     | `sigmoid.r`         | 5 points   |
+| Compute cost for logistic regression | `costFunction.r`    | 30 points  |
+| Gradient for logistic regression     | `costFunction.r`    | 30 points  |
+| Predict Function                     | `predict.r`         | 5 points   |
+| Compute cost for regularized LR      | `costFunctionReg.r` | 15 points  |
+| Gradient for regularized LR          | `costFunctionReg.r` | 15 points  |
+| Total Points                         |                     | 100 points |
+
+You are allowed to submit your solutions multiple times, and we will take only the highest score into consideration.
