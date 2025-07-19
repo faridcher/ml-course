@@ -173,7 +173,9 @@ use the batch gradient descent algorithm. In batch gradient descent, each
 iteration performs the update:
 
 <center>
-$\displaystyle \theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m (h_\theta (x^{(i)})-y^{(i)})x_j^{(i)}$ (simultaneously update $\theta_j$ for all $j$).
+
+$$ \theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^m (h_\theta (x^{(i)})-y^{(i)})x_j^{(i)}\qquad\text{(simultaneously update $\theta_j$ for all $j$).} $$
+
 </center>
 
 With each step of gradient descent, your parameters $\theta_j$ come closer to the optimal values that will achieve the lowest cost $J(\theta)$.
